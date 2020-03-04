@@ -1,0 +1,40 @@
+body{
+    margin: 0;
+}
+
+header{
+    background-image: url(./anakin.png);
+    background-size: cover;
+    padding-left: 10px;
+    padding-left: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color:#222;
+    font-family: 'Abril Fatface', cursive;
+    height: 402px;
+    resize: both;
+}
+
+div{
+    font-size: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+h1{
+    margin-top: 0;
+}
+
+div, main{
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+main{
+    font-family: 'Josefin Sans', sans-serif;
+    color:#222;
+}
+
+h4{
+    font-family: 'Merriweather', serif;
+}
