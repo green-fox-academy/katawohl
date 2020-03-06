@@ -4,15 +4,13 @@ public class PrintBigger {
     public static void main(String[] args) {
         System.out.println("Type in a number");
 
-        Scanner scanner1 = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int number1 = scanner1.nextInt();
+        int number1 = scanner.nextInt();
 
         System.out.println("Type in another number");
 
-        Scanner scanner2 = new Scanner(System.in);
-
-        int number2 = scanner2.nextInt();
+        int number2 = scanner.nextInt();
 
         if (number1 > number2){
             System.out.println("The bigger number is " + number1);

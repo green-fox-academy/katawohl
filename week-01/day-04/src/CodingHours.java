@@ -5,11 +5,24 @@ public class CodingHours {
         //
         // Print how many hours is spent with coding in a semester by an attendee,
         // if the attendee only codes on workdays.
-        System.out.println(17 * 6 * 5);
+
+        int progHourDay = 6;
+        int semesterLengthWeek = 17;
+        int workDaysWeek = 5;
+        double workHourWeek = 52.0;
+
+        int progHourSem = progHourDay * semesterLengthWeek * workDaysWeek;
+
+        System.out.println("A GreenFox Academy attendee spends " + progHourSem + " hours in a semester.");
         //
         // Print the percentage of the coding hours in the semester if the average
         // work hours weekly is 52
-        System.out.println(6 * 5 / 52. * 100);
+
+        double workHoursSem = (workHourWeek * semesterLengthWeek);
+
+        double avrCodHourSem = (progHourSem / workHoursSem *100);
+
+        System.out.println(avrCodHourSem);
 
 
         //int c = 12;

@@ -1,18 +1,24 @@
 public class SecondsInADay {
     public static void main(String[] args) {
-        int currentHours = 14;
-        int currentMinutes = 34;
-        int currentSeconds = 42;
 
         // Write a program that prints the remaining seconds (as an integer) from a
         // day if the current time is represented by the variables
 
-        int totalSec = (24 * 60 *60);
+        int totalHrsDay = 24;
+        int totalMinsHour = 60;
+        int totalSecsMin = 60;
 
-        int secondsPassed = (currentHours * 60 * 60 + currentMinutes * 60 + currentSeconds);
+        int currentHours = 14;
+        int currentMinutes = 34;
+        int currentSeconds = 42;
 
-        int remaingSeconds =  totalSec - secondsPassed;
 
-        System.out.println(remaingSeconds);
+        int totalSecDay = (totalHrsDay * totalMinsHour * totalSecsMin);
+
+        int secondsPassed = (currentHours * totalMinsHour * totalSecsMin + currentMinutes * totalSecsMin + currentSeconds);
+
+        int remainingSeconds =  totalSecDay - secondsPassed;
+
+        System.out.println(remainingSeconds);
     }
 }

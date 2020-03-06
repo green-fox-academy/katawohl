@@ -5,9 +5,14 @@ public class introduceYourself {
             //  - Your name
             //  - Your age
             //  - Your height in meters (as a decimal fraction)
-            System.out.println("Kata Wohlmuth");
-            System.out.println("32");
-            System.out.println("1.7");
+
+            String myName = "Kata Wohlmuth";
+            int myAge = 32;
+            double myHeight = 1.7;
+
+            System.out.println(myName);
+            System.out.println(myAge);
+            System.out.println(myHeight);
             //
             //  Example output:
             //  John Doe
