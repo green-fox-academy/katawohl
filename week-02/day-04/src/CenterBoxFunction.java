@@ -4,23 +4,28 @@ import java.awt.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FourRectangles {
+public class CenterBoxFunction {
 
     public static void mainDraw(Graphics graphics) {
-        // draw four different size and color rectangles.
+        // create a function that draws one square and takes 2 parameters:
+        // the square size and the graphics
+        // and draws a square of that size to the center of the canvas.
+        // draw 3 squares with that function.
         // avoid code duplication.
-        int x = 0;
-        int y = 0;
 
-        for (int i = 0; i < 4; i++) {
-            int width = (i + 1) * 10;
-            int height = (i + 1) * 5;
-            x += height;
-            y += width;
+        int size = 1000;
 
-            graphics.drawRect(x, y, width, height);
-            graphics.setColor(new Color(i * 40, i * 40, i * 40));
+        for (int i = 0; i < 3; i++) {
+            size *=2;
+
+            CenterSquare(size, graphics);
         }
+    }
+
+    public static void CenterSquare(int size, Graphics graphics) {
+        int x = (int) Math.sqrt(size);
+
+        graphics.drawRect((WIDTH / 2) - (x / 2), (HEIGHT / 2) - (x / 2), x, x);
 
     }
 

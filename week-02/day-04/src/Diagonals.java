@@ -10,10 +10,10 @@ public class Diagonals {
         // If it starts from the upper-left corner it should be green, otherwise it should be red.
 
         graphics.setColor(Color.GREEN);
-        graphics.drawLine(0, 0, HEIGHT, HEIGHT);
+        graphics.drawLine(0, 0, WIDTH, HEIGHT);
 
         graphics.setColor(Color.RED);
-        graphics.drawLine(WIDTH, 0, 0, WIDTH);
+        graphics.drawLine(WIDTH, 0, 0, HEIGHT);
 
     }
 
