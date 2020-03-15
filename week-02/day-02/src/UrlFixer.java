@@ -1,11 +1,10 @@
+// Accidentally I got the wrong URL for a funny subreddit. It's probably "odds" and not "bots"
+// Also, the URL is missing a crucial component, find out what it is and insert it too!
+// Try to solve it more than once using different String functions!
+
 public class UrlFixer {
     public static void main(String... args) {
         String url = "https//www.reddit.com/r/nevertellmethebots";
-
-        // Accidentally I got the wrong URL for a funny subreddit. It's probably "odds" and not "bots"
-        // Also, the URL is missing a crucial component, find out what it is and insert it too!
-        // Try to solve it more than once using different String functions!
-
 
         //method 1 replace function
         url = url.replace("bots", "odds");
@@ -27,7 +26,7 @@ public class UrlFixer {
 
         StringBuffer url2 = new StringBuffer("https//www.reddit.com/r/nevertellmethebots");
 
-        url2.insert(5,":");
+        url2.insert(5, ":");
 
         System.out.println(url2.length());
 

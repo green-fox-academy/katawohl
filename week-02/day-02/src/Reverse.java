@@ -1,12 +1,12 @@
+// Create a method that can reverse a String, which is passed as the parameter
+// Use it on this reversed string to check it!
+// Try to solve this using charAt() first, and optionally anything else after.
+
 public class Reverse {
-    public static void main(String... args){
+    public static void main(String... args) {
         String toBeReversed = ".eslaf eb t'ndluow ecnetnes siht ,dehctiws erew eslaf dna eurt fo sgninaem eht fI";
 
-        // Create a method that can reverse a String, which is passed as the parameter
-        // Use it on this reversed string to check it!
-        // Try to solve this using charAt() first, and optionally anything else after.
-
-
+        //region Steps
        /* The steps in this comment are performed by the "reverse" function defined below
 
 
@@ -27,19 +27,19 @@ public class Reverse {
         }
             System.out.println(toBeReversedChar);
        */
+//endregion
 
         reverse(toBeReversed);
     }
 
-    //the sequence above put in a method
-    public static void reverse(String stringToReverse){
-        char [] stringToReverseChar =new char[stringToReverse.length()];
+    public static void reverse(String stringToReverse) {
+        char[] stringToReverseChar = new char[stringToReverse.length()];
 
         for (int i = 0; i < stringToReverse.length(); i++) {
             stringToReverseChar[i] = stringToReverse.charAt(i);
         }
 
-        for(int i=0; i<stringToReverseChar.length/2; i++) {
+        for (int i = 0; i < stringToReverseChar.length / 2; i++) {
             char temp = stringToReverseChar[i];
             stringToReverseChar[i] = stringToReverseChar[stringToReverseChar.length - i - 1];
             stringToReverseChar[stringToReverseChar.length - i - 1] = temp;
