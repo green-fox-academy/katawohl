@@ -1,3 +1,5 @@
+// Create a method that decrypts the doubled.txt
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -7,7 +9,6 @@ import java.util.List;
 
 public class Doubled {
     public static void main(String[] args) {
-        // Create a method that decrypts the doubled.txt
 
         //region old code
         /*
@@ -36,7 +37,7 @@ public class Doubled {
         //endregion
 
         try {
-            printSecond("doubled.txt", "reduced.txt");
+            printSecond("assets/doubled.txt", "assets/reduced.txt");
         } catch (IOException e) {
             System.out.println("File IO problem");
         }

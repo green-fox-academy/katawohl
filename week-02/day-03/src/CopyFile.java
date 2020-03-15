@@ -1,3 +1,7 @@
+// Write a function that copies the contents of a file into another
+// It should take the filenames as parameters
+// It should return a boolean that shows if the copy was successful
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -7,13 +11,10 @@ import java.util.List;
 
 public class CopyFile {
     public static void main(String[] args) {
-        // Write a function that copies the contents of a file into another
-// It should take the filenames as parameters
-// It should return a boolean that shows if the copy was successful
 
         try {
-            System.out.println(CopyFile("my-file.txt", "my-file-copy.txt"));
-        } catch (IOException e){
+            System.out.println(CopyFile("assets/my-file.txt", "assets/my-file-copy.txt"));
+        } catch (IOException e) {
             System.out.println("Unable to write file: my-file.txt");
         }
     }

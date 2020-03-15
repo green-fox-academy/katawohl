@@ -1,12 +1,13 @@
+// Create a function that takes a number
+// divides ten with it,
+// and prints the result.
+// It should print "fail" if the parameter is 0
+
 import java.util.Scanner;
 
 public class DivideByZero {
     public static void main(String[] args) {
 
-// Create a function that takes a number
-// divides ten with it,
-// and prints the result.
-// It should print "fail" if the parameter is 0
 
         Scanner sc = new Scanner(System.in);
 
@@ -16,12 +17,12 @@ public class DivideByZero {
 
         try {
             System.out.println(divideTen(divisor));
-        }catch (ArithmeticException e) {
+        } catch (ArithmeticException e) {
             System.out.println("Fail");
         }
     }
 
-    public static int divideTen(int divisor){
-        return 10/divisor;
+    public static int divideTen(int divisor) {
+        return 10 / divisor;
     }
 }

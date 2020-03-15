@@ -1,12 +1,4 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-
-public class WriteMultipleLines {
-
-    // Create a function that takes 3 parameters: a path, a word and a number
+// Create a function that takes 3 parameters: a path, a word and a number
 // and is able to write into a file.
 // The path parameter should be a string that describes the location of the file you wish to modify
 // The word parameter should also be a string that will be written to the file as individual lines
@@ -15,15 +7,23 @@ public class WriteMultipleLines {
 // into the file and each line should read 'apple'
 // The function should not raise any errors if it could not write the file.
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
+public class WriteMultipleLines {
+
+
     public static void main(String[] args) {
         try {
-            WriteMultipleLines("my-file.txt", "apple", 5);
+            WriteMultipleLines("assets/my-file.txt", "apple", 5);
         } catch (IOException e) {
             System.out.println("Unable to write file: my-file.txt");
         }
 
     }
-
 
     public static void WriteMultipleLines(String filePath, String word, int num) throws IOException {
         Path path = Paths.get(filePath);
