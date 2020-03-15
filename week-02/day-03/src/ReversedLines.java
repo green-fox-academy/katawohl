@@ -10,18 +10,28 @@ public class ReversedLines {
     public static void main(String[] args) {
         // Create a method that decrypts reversed-lines.txt
         try {
-            printRev("reversed-lines.txt", "re-revlines.txt");
+            printRev("assets/reversed-lines.txt", "assets/re-revlines.txt");
         } catch (IOException e) {
             System.out.println("File IO problem");
         }
-
-
     }
 
-    public static void printRev(String ogFile, String reversedFile) throws IOException {
-        Path content = Paths.get(ogFile);
+    public static void printRev(String originalFile, String reversedFile) throws IOException {
+        Path content = Paths.get(originalFile);
 
         List<String> contentStringAr = Files.readAllLines(content);
+
+        /*for (String line : contentStringAr) {
+            for (int i = 0; i < line.length() / 2; i++) {
+                char firstChar = line.charAt(i);
+                char lastChar = line.charAt(line.length() - i - 1);
+                char temp = line.charAt(i);
+                firstChar = lastChar;
+                lastChar = temp;
+            }
+            System.out.println();
+        }
+        System.out.println(contentStringAr);*/
 
         StringBuilder charReversed = new StringBuilder();
 
@@ -31,9 +41,10 @@ public class ReversedLines {
                 char temp = characterList[j];
                 characterList[j] = characterList[characterList.length - j - 1];
                 characterList[characterList.length - j - 1] = temp;
-            }charReversed.append(characterList);
+            }
+            charReversed.append(characterList);
+            System.out.println(charReversed);
         }
-
 
         Path reversed = Paths.get(reversedFile);
 
