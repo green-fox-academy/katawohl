@@ -6,22 +6,33 @@ public class Factorio {
 
 // - Create a function called `factorio`
 //   that returns it's input's factorial
+
         int num = 10;
         System.out.println(factorio(num));
     }
 
-    public static int factorio(int a){
-        int [] arrayNumber = new int[a];
+    //region Solution with array 
+/*    public static int factorio(int a) {
+        int[] numbersBelow = new int[a];
 
-        for (int i =0; i < a; i++) {
+        for (int i = 0; i < a; i++) {
 
-            arrayNumber[i] = i +1;
+            numbersBelow[i] = i + 1;
         }
 
         int sum = 1;
 
-        for (int num : arrayNumber){
-            sum = sum * num;
+        for (int num : numbersBelow) {
+            sum *= num;
+        }
+        return sum;
+    }*/
+    //endregion
+
+    public static int factorio(int numToFactor) {
+        int sum = 1;
+        for (int i = 1; i <= numToFactor; i++) {
+            sum *= i;
         }
         return sum;
     }
