@@ -12,7 +12,7 @@ public class ReversedLines {
     Path path = Paths.get(pathToReverse);
     try {
       List <String> lines = Files.readAllLines(path);
-      List <String> reversedLines = new ArrayList<>();
+      List<String> reversedLines = new ArrayList<>();
       for (String line: lines) {
         String tempReversed = "";
         for (int i = 0; i <line.length() ; i++) {
