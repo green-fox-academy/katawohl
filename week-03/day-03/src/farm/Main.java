@@ -13,7 +13,7 @@ public class Main {
     animalList.add(new Animal(45,11));
     animalList.add(new Animal(0,4));
     animalList.add(new Animal(21,23));
-    animalList.add(new Animal(8,34));
+    animalList.add(new Animal(8, 34));
 
 
     Farm farm = new Farm(animalList, 1);
