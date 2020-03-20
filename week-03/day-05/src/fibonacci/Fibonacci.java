@@ -1,0 +1,20 @@
+package fibonacci;
+
+public class Fibonacci {
+
+  public long fiboCompute(int indexInQuestion) {
+
+    long[] fiboSequence = new long[indexInQuestion];
+
+    int seqStart = 0;
+    int seqStart2 = 1;
+    fiboSequence[0] = seqStart;
+    fiboSequence[1] = seqStart2;
+
+    for (int i = 2; i < indexInQuestion; i++) {
+      long nextNumber = fiboSequence[i - 1] + fiboSequence[i - 2];
+      fiboSequence[i] = nextNumber;
+    }
+    return fiboSequence[indexInQuestion - 1];
+  }
+}
