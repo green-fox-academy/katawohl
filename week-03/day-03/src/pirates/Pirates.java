@@ -20,8 +20,8 @@ Create a Pirate class. While you can add other fields and methods, you must have
 public class Pirates {
   int intoxLevel;
   IsDead isDead;
-  PassedOut passedOut;
-  HasParrot hasParrot;
+  PassedOut ifPassedOut;
+  HasParrot ifHasParrot;
 
   public enum IsDead{
     dead,
@@ -41,21 +41,21 @@ public class Pirates {
   public Pirates() {
     this.intoxLevel = 0;
     this.isDead = IsDead.alive;
-    this.passedOut = PassedOut.awake;
-    this.hasParrot = HasParrot.parrotless;
+    this.ifPassedOut = PassedOut.awake;
+    this.ifHasParrot = HasParrot.parrotless;
   }
 
   public Pirates(int intoxLevel) {
     this.intoxLevel = intoxLevel;
     this.isDead = IsDead.alive;
-    this.passedOut = PassedOut.awake;
+    this.ifPassedOut = PassedOut.awake;
   }
 
-  public Pirates(boolean hasParrot) {
+  public Pirates(boolean ifHasParrot) {
     this.intoxLevel = 0;
     this.isDead = IsDead.alive;
-    this.hasParrot = HasParrot.hasParrot;
-    this.passedOut = PassedOut.awake;
+    this.ifHasParrot = HasParrot.hasParrot;
+    this.ifPassedOut = PassedOut.awake;
   }
 
   public void drinkSomeRum() {
@@ -68,13 +68,13 @@ public class Pirates {
 
   public void passOutAndSleep() {
     this.intoxLevel = 0;
-    this.passedOut = PassedOut.passedOut;
+    this.ifPassedOut = PassedOut.passedOut;
     System.out.println("Night-night");
   }
 
   public void wakeUp() {
-    if (this.passedOut == PassedOut.passedOut) {
-      passedOut = PassedOut.awake;
+    if (this.ifPassedOut == PassedOut.passedOut) {
+      ifPassedOut = PassedOut.awake;
     } else {
       System.out.println("I'm awake as a pirate!");
     }

@@ -48,7 +48,7 @@ public class Ship {
   public void displayShip() {
     if (captain.isDead != Pirates.IsDead.dead) {
       System.out.println("The captain of the ship " + this.name + " consumed " + captain.intoxLevel + " glasses of rum. He is " +
-          "currently " + captain.passedOut + ".");
+          "currently " + captain.ifPassedOut + ".");
     } else {
       System.out.println("The captain of the ship " + this.name + " is unfortunately dead. R.I.P" +
           ".," +
