@@ -11,6 +11,8 @@ public class Main {
 
     System.out.println();
 
-    student.clone().introduce();
+    Student jonhTheClone = student.clone();
+
+    jonhTheClone.introduce();
   }
 }

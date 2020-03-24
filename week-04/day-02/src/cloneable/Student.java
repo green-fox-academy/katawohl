@@ -1,6 +1,6 @@
 package cloneable;
 
-public class Student extends Person {
+public class Student extends Person implements Cloneable {
   private String previousOrganization;
   private int skippedDays;
 
@@ -30,7 +30,6 @@ public class Student extends Person {
     this.skippedDays = +numberOfDays;
   }
 
-  @Override
   public Student clone() {
     Student student = new Student();
     student.name = this.name + ", the clone";
