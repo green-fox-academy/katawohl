@@ -26,7 +26,7 @@ public class Gnirts implements CharSequence {
 
   @Override
   public String subSequence(int i, int i1) {
-    if (i1 > i) {
+    if (i1 < i) {
       char[] stringToReverse = this.string.toCharArray();
       char[] reversedCharArray = new char[i1 - i];
       int counter = 0;
