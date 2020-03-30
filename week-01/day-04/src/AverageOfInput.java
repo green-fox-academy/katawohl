@@ -12,10 +12,10 @@ public class AverageOfInput {
         Scanner scanner = new Scanner(System.in);
 
         int sum = 0;
-        double inputCount = 5.;
+        int inputCount = 5;
 
         for (int i = 1; i <= inputCount; i++) {
-            System.out.println("Kérem a(z) " + i +  ". számot:");
+            System.out.println("Kérem a(z) " + i + ". számot:");
             int number = scanner.nextInt();
             sum = number + sum;
         }
@@ -24,30 +24,5 @@ public class AverageOfInput {
 
         System.out.println("Sum: " + sum + ", average: " + average);
 
-
-
-/*
-        int number1 = scanner.nextInt();
-
-
-        int number2 = scanner.nextInt();
-
-
-
-        int number3 = scanner.nextInt();
-
-
-        int number4 = scanner.nextInt();
-
-        int number5 = scanner.nextInt();
-
-        int sum  = (number1 + number2 + number3 + number4 + number5);
-
-
-        System.out.println();
-
-        System.out.println("Sum: " + sum + ", " + "Average: " + average);
-*/
-        // Sum: 22, Average: 4.4
     }
 }
