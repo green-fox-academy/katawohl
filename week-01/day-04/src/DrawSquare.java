@@ -27,9 +27,9 @@ public class DrawSquare {
                 System.out.print("%");
             }
             System.out.println();
-            for (int j = 1;  j <= num-2 ; j++){
+            for (int j = 1; j <= num - 2; j++) {
                 System.out.print("%");
-                for (int k = 1; k <= num-2 ; k++){
+                for (int k = 1; k <= num - 2; k++) {
                     System.out.print(" ");
                 }
                 System.out.println();
