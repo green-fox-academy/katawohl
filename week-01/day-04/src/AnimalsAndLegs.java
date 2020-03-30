@@ -9,9 +9,7 @@ public class AnimalsAndLegs {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Welcome!");
-
-        System.out.println("Now, please enter the number of chickens you have.");
+        System.out.println("Please enter the number of chickens you have.");
 
         int chickens = scanner.nextInt();
 
@@ -19,7 +17,7 @@ public class AnimalsAndLegs {
 
         System.out.println("Now, please enter the number of pigs you have.");
 
-         int pigs = scanner.nextInt();
+        int pigs = scanner.nextInt();
 
         System.out.println();
 
@@ -30,7 +28,5 @@ public class AnimalsAndLegs {
 
         System.out.println("The number of legs on your farm is: " + legsTotal);
 
-        // The second represents the number of pigs owned by the farmer
-        // It should print how many legs all the animals have
     }
 }
