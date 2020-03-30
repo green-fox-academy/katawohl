@@ -14,17 +14,15 @@ public class DrawPyramid {
 // The pyramid should have as many lines as the number was
         Scanner scanner = new Scanner(System.in);
 
-
-
         System.out.println("Please, type in a number:");
 
         int num = scanner.nextInt();
 
-        for (int i = 1; i <=num ; i++) {
-            for (int space = 1; space <= num - i; space++){
+        for (int i = 1; i <= num; i++) {
+            for (int space = 1; space <= num - i; space++) {
                 System.out.print(" ");
             }
-            for (int star = 1; star <= (2 * i -1); star++){
+            for (int star = 1; star <= (2 * i - 1); star++) {
                 System.out.print("*");
             }
 
