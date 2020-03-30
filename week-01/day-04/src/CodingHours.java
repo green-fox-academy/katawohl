@@ -20,24 +20,8 @@ public class CodingHours {
 
         double workHoursSem = (workHourWeek * semesterLengthWeek);
 
-        double avrCodHourSem = (progHourSem / workHoursSem *100);
+        double avrCodHourSem = (progHourSem / workHoursSem * 100);
 
         System.out.println(avrCodHourSem);
-
-
-        //int c = 12;
-        //print out a number that larger by one does not change value
-        //System.out.println(c+1);
-        //int d = --c;
-        //System.out.println(d);
-
-        // changes the value before printing c
-        //System.out.println(++c);
-
-        //changes the value after printing c
-        //System.out.println(c++); // Prints 12
-        //System.out.println(c); // Prints 13
-
-
     }
 }
