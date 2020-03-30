@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.Scanner;
 
-public class CountFromTo {
+public class CountFromTwo {
     public static void main(String[] args) {
 
 // Create a program that asks for two numbers
