@@ -14,29 +14,27 @@ package pirates;
     The loser crew has a random number of losses (deaths).
     The winner captain and crew has a party, including a random number of rum :)*/
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Ship {
-  String name;
-  Pirates captain;
-  List<Pirates> crew;
+  private List<Pirate> crew = new ArrayList<>();
+  Random random = new Random();
 
-  public Ship(String name) {
-    this.name = name;
-  }
+  public void fillShip() {
+    crew.add(new Captain());
+    int piratesNumber = random.nextInt(10) + 1;
 
-  public void fillShip(Pirates captain) {
-    this.captain = captain;
-  }
-
-  public void fillShip(List<Pirates> crew) {
-    this.crew = crew;
+    for (int i = 0; i < piratesNumber; i++) {
+      crew.add(new Pirate());
+    }
   }
 
   public int shipCrewNum() {
     int numOfCrew = 0;
-    for (Pirates pirate : this.crew) {
-      if (pirate.isDead == Pirates.IsDead.alive) {
+    for (Pirate pirate : this.crew) {
+      if (!pirate.isDead()) {
         numOfCrew++;
       } else {
         continue;
@@ -46,53 +44,62 @@ public class Ship {
   }
 
   public void displayShip() {
-    if (captain.isDead != Pirates.IsDead.dead) {
-      System.out.println("The captain of the ship " + this.name + " consumed " + captain.intoxLevel + " glasses of rum. He is " +
-          "currently " + captain.ifPassedOut + ".");
+    Pirate captain = crew.get(0);
+
+    if (!captain.isDead()) {
+      System.out.println("The captain consumed " + captain.getIntoxLevel() + " glasses of rum. He" +
+          " is " +
+          "currently " + (captain.isPassedOut() ? "" : " not ") + "passed out");
     } else {
-      System.out.println("The captain of the ship " + this.name + " is unfortunately dead. R.I.P" +
+      System.out.println("The captain is unfortunately dead. R.I.P" +
           ".," +
           " Captain!");
     }
 
-    System.out.println("The number of alive crew on " + this.name + " is " + this.shipCrewNum() +
+    System.out.println("The number of alive crew is " + this.shipCrewNum() +
         ".");
   }
 
   public void party() {
-    for (int i = 0; i < (int) (Math.random() * (10)); i++) {
-      captain.intoxLevel++;
-      for (Pirates pirate : crew) {
-        pirate.intoxLevel++;
+    int rums = random.nextInt(11);
+    while (rums > 0) {
+      for (Pirate pirate : crew) {
+        if (!pirate.isDead()) {
+          pirate.drinkSomeRum();
+          rums--;
+        }
+
+        if (rums == 0) {
+          break;
+        }
       }
     }
   }
 
   public void randomCrewDeath() {
-    for (int i = 0; i < (int) (Math.random() * crew.size()); i++) {
+    int deaths = random.nextInt(crew.size());
+    for (int i = 0; i < deaths; i++) {
       crew.get(i).die();
     }
   }
 
-  public boolean battle(Ship ship) {
+  public boolean battle(Ship enemy) {
 
     int scoreThisShip;
     int scoreEnemy;
 
-    scoreThisShip = this.shipCrewNum() + this.captain.intoxLevel;
-    scoreEnemy = ship.shipCrewNum() + ship.captain.intoxLevel;
+    scoreThisShip = this.shipCrewNum() - this.crew.get(0).getIntoxLevel();
+    scoreEnemy = enemy.shipCrewNum() - enemy.crew.get(0).getIntoxLevel();
 
     if (scoreThisShip >= scoreEnemy) {
       this.party();
-      ship.randomCrewDeath();
+      enemy.randomCrewDeath();
       System.out.println("The enemy is destroyed!");
-      System.out.println(this.name + " won!");
       return true;
     } else {
-      ship.party();
+      enemy.party();
       this.randomCrewDeath();
       System.out.println("Uh-oh, we're screwed!");
-      System.out.println(ship.name + " won!");
       return false;
     }
   }
