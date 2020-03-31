@@ -10,7 +10,8 @@ public class CenteredSquare {
         // Draw a green 10x10 square to the canvas' center.
         int width = 10;
         int height = 10;
-        graphics.drawRect(WIDTH / 2 - width / 2, HEIGHT / 2 - height / 2, 10, 10);
+        graphics.setColor(Color.green);
+        graphics.fillRect(WIDTH / 2 - width / 2, HEIGHT / 2 - height / 2, 10, 10);
 
 
     }
