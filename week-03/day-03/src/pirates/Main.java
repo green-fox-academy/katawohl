@@ -2,22 +2,22 @@ package pirates;
 
 public class Main {
   public static void main(String[] args) {
-    Pirates piri1 = new Pirates();
-    Pirates piri2 = new Pirates();
-    Pirates piri3 = new Pirates();
-    Pirates piri4 = new Pirates();
-    Pirates piri5 = new Pirates();
+    Pirate piri1 = new Pirate();
+    Pirate piri2 = new Pirate();
+    Pirate piri3 = new Pirate();
+    Pirate piri4 = new Pirate();
+    Pirate piri5 = new Pirate();
 
     piri1.drinkSomeRum();
-    System.out.println(piri1.intoxLevel);
+    System.out.println(piri1.getIntoxLevel());
     piri1.howsItGoingMate();
-    System.out.println(piri1.intoxLevel);
+    System.out.println(piri1.getIntoxLevel());
     piri1.howsItGoingMate();
-    System.out.println(piri1.intoxLevel);
+    System.out.println(piri1.getIntoxLevel());
     piri1.howsItGoingMate();
-    System.out.println(piri1.intoxLevel);
+    System.out.println(piri1.getIntoxLevel());
     piri1.howsItGoingMate();
-    System.out.println(piri1.intoxLevel);
+    System.out.println(piri1.getIntoxLevel());
 
     piri5.die();
 
