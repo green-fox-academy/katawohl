@@ -17,104 +17,79 @@ Create a Pirate class. While you can add other fields and methods, you must have
     Add a parrot.
 */
 
-public class Pirates {
-  int intoxLevel;
-  IsDead isDead;
-  PassedOut ifPassedOut;
-  HasParrot ifHasParrot;
+import java.util.Random;
 
-  public enum IsDead{
-    dead,
-    alive
-  }
+public class Pirate {
+  private int intoxLevel;
+  private boolean isDead;
+  private boolean isPassedOut;
 
-  public enum PassedOut{
-    passedOut,
-    awake
-  }
-
-  public enum HasParrot{
-    hasParrot,
-    parrotless
-  }
-
-  public Pirates() {
+  public Pirate() {
     this.intoxLevel = 0;
-    this.isDead = IsDead.alive;
-    this.ifPassedOut = PassedOut.awake;
-    this.ifHasParrot = HasParrot.parrotless;
+    this.isDead = false;
+    this.isPassedOut = false;
   }
 
-  public Pirates(int intoxLevel) {
+  public Pirate(int intoxLevel) {
     this.intoxLevel = intoxLevel;
-    this.isDead = IsDead.alive;
-    this.ifPassedOut = PassedOut.awake;
-  }
-
-  public Pirates(boolean ifHasParrot) {
-    this.intoxLevel = 0;
-    this.isDead = IsDead.alive;
-    this.ifHasParrot = HasParrot.hasParrot;
-    this.ifPassedOut = PassedOut.awake;
+    this.isDead = false;
+    this.isPassedOut = false;
   }
 
   public void drinkSomeRum() {
-    if (this.isDead == IsDead.dead) {
+    if (this.isDead) {
       System.out.println("He's dead :(");
     } else {
-      this.intoxLevel += 1;
+      this.intoxLevel++;
     }
   }
 
   public void passOutAndSleep() {
-    this.intoxLevel = 0;
-    this.ifPassedOut = PassedOut.passedOut;
-    System.out.println("Night-night");
-  }
-
-  public void wakeUp() {
-    if (this.ifPassedOut == PassedOut.passedOut) {
-      ifPassedOut = PassedOut.awake;
+    if (this.isDead) {
+      System.out.println("He's dead :(");
     } else {
-      System.out.println("I'm awake as a pirate!");
+      this.intoxLevel = 0;
+      this.isPassedOut = false;
+      System.out.println("Night-night");
     }
   }
 
   public void howsItGoingMate() {
-    if (this.intoxLevel < 4 & this.isDead != IsDead.dead) {
+    if (this.intoxLevel < 4 && !this.isDead) {
       drinkSomeRum();
       System.out.println("Pour me anudder!");
-    } else if (this.isDead != IsDead.dead) {
+    } else if (!this.isDead) {
       System.out.println("Arghh, I'ma Pirate. How d'ya d'ink its goin?");
-      passOutAndSleep();
+      isPassedOut = true;
     } else {
       System.out.println("He's dead :(");
     }
   }
 
   public void die() {
-    this.intoxLevel = 0;
-    this.isDead = IsDead.dead;
+    this.isDead = true;
   }
 
-  public void brawl(Pirates pirate) {
-    if (this.isDead == IsDead.dead) {
+  public void brawl(Pirate enemy) {
+    if (this.isDead) {
       System.out.println("The dead can't fight");
     } else {
-      if (pirate.isDead == IsDead.dead) {
+      if (enemy.isDead) {
         System.out.println("You can't fight him, he's dead :(");
       } else {
-        int random = (int) (Math.random() * (3)) + 1;
-        if (random == 1) {
+        Random random = new Random();
+        int chance = random.nextInt(3);
+
+        if (chance == 1) {
           die();
           System.out.println("You dead, hah!");
         }
-        if (random == 2) {
-          pirate.die();
+        if (chance == 2) {
+          enemy.die();
           System.out.println("Killed the bastard!");
         }
-        if (random == 3) {
-          pirate.passOutAndSleep();
+        if (chance == 3) {
+          enemy.passOutAndSleep();
           passOutAndSleep();
           System.out.println("Time to sleep you two!");
         }
@@ -122,4 +97,19 @@ public class Pirates {
     }
   }
 
+  public int getIntoxLevel() {
+    return intoxLevel;
+  }
+
+  public boolean isDead() {
+    return isDead;
+  }
+
+  public boolean isPassedOut() {
+    return isPassedOut;
+  }
+
+  public void setDead(boolean dead) {
+    isDead = dead;
+  }
 }
