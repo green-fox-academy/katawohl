@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AnimalTest {
 
   @Test
-  public void testEat_Valid(){
+  public void eat_DefaultHungerValue50_HungerEquals49(){
     Animal animal = new Animal();
 
     animal.eat();
@@ -16,7 +16,7 @@ public class AnimalTest {
   }
 
   @Test
-  public void testDrink_Valid(){
+  public void drink_DefaultThirstValue50_ThirstEquals49(){
     Animal animal = new Animal();
 
     animal.drink();
@@ -25,7 +25,7 @@ public class AnimalTest {
   }
 
   @Test
-  public void testPlay_Valid(){
+  public void play_DefaultThirstHungerValues50_HungerThirstEquals51(){
     Animal animal = new Animal();
 
     animal.play();
