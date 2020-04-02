@@ -27,4 +27,11 @@ public class SumTest {
 
     assertEquals(0, summy.gimmeSum(inputNumbers));
   }
+
+  @Test
+  public void gimmeSum_OnlyZerosInArray_ReturnsZero() {
+    int[] inputNumbers = {0, 0, 0, 0, 0, 0, 0, 0};
+
+    assertEquals(0, summy.gimmeSum((inputNumbers)));
+  }
 }
