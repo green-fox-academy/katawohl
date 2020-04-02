@@ -9,12 +9,12 @@ public class ApplesTest {
   Apples apple = new Apples();
 
   @Test
-  public void getAppleValid() {
+  public void getApple_Expected_Valid() {
     assertEquals("apple", apple.getApple());
   }
 
   @Test
-  public void getAppleNotValid(){
+  public void getApple_Unexpected_NotValid(){
    assertNotEquals("bpple", apple.getApple());
   }
 }
