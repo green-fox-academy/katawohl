@@ -9,8 +9,12 @@ public class ApplesTest {
   Apples apple = new Apples();
 
   @Test
-  public void getApple() {
-
+  public void getAppleValid() {
     assertEquals("apple", apple.getApple());
+  }
+
+  @Test
+  public void getAppleNotValid(){
+   assertNotEquals("bpple", apple.getApple());
   }
 }
