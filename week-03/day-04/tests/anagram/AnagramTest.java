@@ -9,12 +9,12 @@ public class AnagramTest {
   Anagram anagram = new Anagram();
 
   @Test
-  public void areTheTwoAnagramsTrue() {
+  public void areTheTwoAnagrams_True_Valid() {
     assertTrue(anagram.areTheTwoAnagrams("ahfjhaiehfsgbjkas", "ahjfhaiehfsgbjkas"));
   }
 
   @Test
-  public void areTheTwoAnagramsFalse() {
+  public void areTheTwoAnagrams_False_Valid() {
     assertFalse(anagram.areTheTwoAnagrams("abcdefgh", "avcdefgh"));
   }
 }
