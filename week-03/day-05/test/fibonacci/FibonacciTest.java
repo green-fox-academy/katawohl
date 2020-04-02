@@ -7,7 +7,7 @@ import org.junit.Test;
 public class FibonacciTest {
 
   @Test
-  public void fiboCompute_SequenceOfFive_Valid() {
+  public void fiboCompute_SequenceOfFive_ReturnsFifthFiboNum() throws Exception {
     Fibonacci fibonacci = new Fibonacci();
 
 
@@ -17,13 +17,19 @@ public class FibonacciTest {
   }
 
   @Test
-  public void fiboCompute_SequenceOfHunderd_Valid() {
+  public void fiboCompute_SequenceOf47_Returns47thFibonacciNum() throws Exception {
     Fibonacci fibonacci = new Fibonacci();
 
-    long fiboNum = fibonacci.fiboCompute(35);
+    long fiboNum = fibonacci.fiboCompute(47);
 
-    assertEquals(5702887, fiboNum);
+    assertEquals(1836311903, fiboNum);
+  }
 
+  @Test(expected = Exception.class)
+  public void fiboCompute_SequenceOf48_ExceptionThrown() throws Exception {
+    Fibonacci fibonacci = new Fibonacci();
+
+    fibonacci.fiboCompute(48);
   }
 
 }
