@@ -13,15 +13,16 @@ public class Fibonacci {
     fiboSequence[0] = seqStart;
     fiboSequence[1] = seqStart2;
 
-    if (indexInQuestion < 48) {
+    try {
       for (int i = 2; i < indexInQuestion; i++) {
         long nextNumber = fiboSequence[i - 1] + fiboSequence[i - 2];
         fiboSequence[i] = nextNumber;
       }
       return fiboSequence[indexInQuestion - 1];
-    } else {
+    } catch (Exception e) {
       throw new Exception("Number is too high to process");
     }
+
   }
 
 }

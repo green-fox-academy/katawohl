@@ -25,7 +25,8 @@ public class FibonacciTest {
     assertEquals(1836311903, fiboNum);
   }
 
-  @Test(expected = Exception.class)
+
+  @Test
   public void fiboCompute_SequenceOf48_ExceptionThrown() throws Exception {
     Fibonacci fibonacci = new Fibonacci();
 
