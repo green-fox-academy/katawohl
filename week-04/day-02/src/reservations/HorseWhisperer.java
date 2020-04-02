@@ -2,6 +2,6 @@ package reservations;
 
 public enum HorseWhisperer {
   ROBERT,
-  CHRISTINE,
+  KRISTIN,
   SCARLETT
 }
