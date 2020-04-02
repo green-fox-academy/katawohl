@@ -12,13 +12,13 @@ public class Reservations {
 
     Reservation guestSlot1 = new Reservation(HorseWhisperer.ROBERT, Slot.AFTERNOON, true, false);
     Reservation guestSlot2 = new Reservation(HorseWhisperer.ROBERT, Slot.MORNING, true, false);
-    Reservation guestSlot3 = new Reservation(HorseWhisperer.CHRISTINE, Slot.AFTERNOON, true, false);
-    Reservation guestSlot4 = new Reservation(HorseWhisperer.CHRISTINE, Slot.AFTERNOON, true, false);
+    Reservation guestSlot3 = new Reservation(HorseWhisperer.KRISTIN, Slot.AFTERNOON, true, false);
+    Reservation guestSlot4 = new Reservation(HorseWhisperer.KRISTIN, Slot.AFTERNOON, true, false);
     Reservation guestSlot5 = new Reservation(HorseWhisperer.SCARLETT, Slot.MORNING, true, false);
     Reservation guestSlot6 = new Reservation(HorseWhisperer.SCARLETT, Slot.AFTERNOON, true, false);
     Reservation guestSlot7 = new Reservation(HorseWhisperer.SCARLETT, Slot.AFTERNOON, false, false);
     Reservation guestSlot8 = new Reservation(HorseWhisperer.ROBERT, Slot.AFTERNOON, false, true);
-    Reservation guestSlot9 = new Reservation(HorseWhisperer.CHRISTINE, Slot.MORNING, false, true);
+    Reservation guestSlot9 = new Reservation(HorseWhisperer.KRISTIN, Slot.MORNING, false, true);
 
     List<Reservation> reservationList = new ArrayList<>();
 
@@ -27,8 +27,12 @@ public class Reservations {
 
     confirmBooked(reservationList);
 
-    for (Reservation res: reservationList) {
-      System.out.println("Booking# " + res.getCodeBooking() + " for " + res.getDowBooking());
+    for (Reservation res : reservationList) {
+      if (res.isConfirmed()) {
+        System.out.println("Booking# " + String.format("%S", res.getCodeBooking()) + " for " + res.getDowBooking());
+      } else {
+        continue;
+      }
     }
 
   }

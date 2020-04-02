@@ -25,10 +25,14 @@ public class Reservation implements Confirmable {
     }
   }
 
+  public boolean isConfirmed() {
+    return isConfirmed;
+  }
+
   public static void confirmBooked(List<Reservation> reservationList) {
     for (Reservation res : reservationList) {
       for (int i = 0; i < reservationList.size(); i++) {
-        if (res != reservationList.get(i) && !res.searchCrash(reservationList.get(i))) {
+        if (res != reservationList.get(i) && !res.searchCrash(reservationList.get(i)) && res.isBooked) {
           res.isConfirmed = true;
         } else {
           res.isConfirmed = false;
