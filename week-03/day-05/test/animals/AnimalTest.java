@@ -16,12 +16,44 @@ public class AnimalTest {
   }
 
   @Test
+  public void eat_HungerValue0_HungerValueEquals0(){
+    Animal animal = new Animal(0,50);
+    animal.eat();
+
+    assertEquals(0, animal.hunger);
+  }
+
+  @Test
+  public void eat_HungerValueNegative_HungerValueSetToZero(){
+    Animal animal = new Animal(-10,50);
+    animal.eat();
+
+    assertEquals(0, animal.hunger);
+  }
+
+  @Test
   public void drink_DefaultThirstValue50_ThirstEquals49(){
     Animal animal = new Animal();
 
     animal.drink();
 
     assertEquals(49, animal.thirst);
+  }
+
+  @Test
+  public void eat_ThirstValue0_HungerValueEquals0(){
+    Animal animal = new Animal(50,0);
+    animal.drink();
+
+    assertEquals(0, animal.thirst);
+  }
+
+  @Test
+  public void eat_ThirstValueNegative_HungerValueSetToZero(){
+    Animal animal = new Animal(50,-10);
+    animal.drink();
+
+    assertEquals(0, animal.thirst);
   }
 
   @Test

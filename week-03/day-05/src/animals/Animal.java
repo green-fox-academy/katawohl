@@ -13,15 +13,27 @@ public class Animal {
     this.thirst = thirst;
   }
 
-  public void eat(){
-    hunger--;
+  public void eat() {
+    if (this.hunger == 0) {
+      return;
+    } else if (this.hunger < 0){
+      this.hunger = 0;
+    } else {
+      hunger--;
+    }
   }
 
-  public void drink(){
-    thirst--;
+  public void drink() {
+    if (this.thirst == 0) {
+      return;
+    } else if (this.thirst < 0){
+      this.thirst = 0;
+    } else {
+      thirst--;
+    }
   }
 
-  public void play(){
+  public void play() {
     hunger++;
     thirst++;
   }
