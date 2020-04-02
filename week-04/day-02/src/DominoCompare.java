@@ -1,5 +1,6 @@
 import comparable.Domino;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -16,8 +17,6 @@ public class DominoCompare {
 
     Collections.sort(dominoes);
 
-    for (Domino domino: dominoes) {
-      System.out.print(" [" + domino.getLeft() + ", " + domino.getRight() + "] ");
-    }
+    System.out.println(Arrays.toString(dominoes.toArray()));
   }
 }
