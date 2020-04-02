@@ -24,17 +24,13 @@ public class Anagram {
 */
   //endregion
 
-  public boolean areTheTwoAnagrams(String string1, String string2) {
-    char[] string1CharAr = string1.toCharArray();
-    char[] string2CharAr = string2.toCharArray();
+  public boolean areTheTwoAnagrams(String stringOne, String stringToCompare) {
+    char[] stringOneAsCharArry = stringOne.toCharArray();
+    char[] stringToCompareAsCharArray = stringToCompare.toCharArray();
 
-    int res = 0;
+    Arrays.sort(stringOneAsCharArry);
+    Arrays.sort(stringToCompareAsCharArray);
 
-    for (char c : string1CharAr) {
-      res += Arrays.binarySearch(string2CharAr, c);
-    }
-
-    return res > 0;
-
+    return Arrays.equals(stringOneAsCharArry, stringToCompareAsCharArray);
   }
 }
