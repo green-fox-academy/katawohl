@@ -12,10 +12,14 @@ public class ThingsCompare {
     Thing stand = new Thing("Stand up");
     Thing lunch = new Thing("Eat lunch");
 
+    List<Thing> things = new ArrayList<>(Arrays.asList(milk, obstacles,stand,lunch));
+
+    Collections.sort(things);
+
+    System.out.println(Arrays.toString(things.toArray()));
+
     stand.complete();
     lunch.complete();
-
-    List<Thing> things = new ArrayList<>(Arrays.asList(milk, obstacles,stand,lunch));
 
     Collections.sort(things);
 
