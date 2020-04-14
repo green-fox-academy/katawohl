@@ -6,7 +6,7 @@ public class Exercise6 {
 
     //Write a Stream Expression to find the uppercase characters in a string!
 
-    String string = "string";
+    String string = "sTrinG";
 
     char[] charactersOfString = string.toCharArray();
 
@@ -16,7 +16,7 @@ public class Exercise6 {
     }
 
     listC.stream()
-        .map(Character::toUpperCase)
+        .filter(c -> c.isUpperCase(c))
         .forEach(System.out::println);
   }
 }
