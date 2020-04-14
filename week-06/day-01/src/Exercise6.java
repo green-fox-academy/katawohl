@@ -10,7 +10,7 @@ public class Exercise6 {
 
     char[] charactersOfString = string.toCharArray();
 
-    List<Character> listC = new ArrayList<Character>();
+    List<Character> listC = new ArrayList<>();
     for (char c : charactersOfString) {
       listC.add(c);
     }
