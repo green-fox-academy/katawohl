@@ -1,0 +1,28 @@
+body {
+    background-color: cadetblue;
+    border-collapse: collapse;
+}
+
+table {
+    margin: auto;
+    border: coral;
+}
+
+th{
+    background-color: firebrick;
+}
+
+tr:nth-child(even){
+    background-color: darkolivegreen;
+}
+
+tr:nth-child(odd){
+    background-color: royalblue;
+}
+
+th, td{
+    font-family: Arial;
+    font-size: 18px;
+    color: darkgrey;
+    padding-left: 70px;
+}
