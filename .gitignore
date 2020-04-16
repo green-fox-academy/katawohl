@@ -6,6 +6,8 @@
 .vscode
 out
 .idea
+*.iml
+*.xml
 
 # Log file
 *.log
