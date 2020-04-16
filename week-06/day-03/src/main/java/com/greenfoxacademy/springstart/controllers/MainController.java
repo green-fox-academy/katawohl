@@ -1,3 +1,4 @@
+/*
 package com.greenfoxacademy.springstart.controllers;
 
 import org.springframework.stereotype.Controller;
@@ -16,3 +17,4 @@ public class MainController {
     return "Hello World";
   }
 }
+*/
