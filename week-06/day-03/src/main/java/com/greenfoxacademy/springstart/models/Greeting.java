@@ -1,19 +1,21 @@
 package com.greenfoxacademy.springstart.models;
 
-public class Greeting {
-  long id;
-  String content;
+import java.util.concurrent.atomic.AtomicLong;
 
-  public long getId() {
-    return id;
-  }
+public class Greeting {
+  long greetCount;
+  String content;
 
   public String getContent() {
     return content;
   }
 
-  public Greeting(long id, String content) {
-    this.id = id;
+  public long getGreetCount() {
+    return greetCount;
+  }
+
+  public Greeting(long greetCount, String content) {
+    this.greetCount = greetCount;
     this.content = content;
   }
 }
