@@ -16,7 +16,7 @@ public class Exercise9 {
       listC.add(c);
     }
 
-    Map<Object, Long> freqOfChars =
+    Map<Character, Long> freqOfChars =
         listC.stream()
          .collect(Collectors.groupingBy(c -> c, Collectors.counting()));
 
