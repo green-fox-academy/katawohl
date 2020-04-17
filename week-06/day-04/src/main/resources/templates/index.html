@@ -10,11 +10,21 @@
 <hr>
 
 <nav>
-    <a href="/available/">Only Available</a>
-    <a href="/cheapest/">Cheapest First</a>
-    <a href="/gnome/">Contains gnome</a>
-    <a href="/stock/">Average Stock</a>
-    <a href="/mostexpensive/">Most expensive available</a>
+    <a href="/available/">
+        <button>Only available</button>
+    </a>
+    <a href="/cheapest/">
+        <button>Cheapest First</button>
+    </a>
+    <a href="/gnome/">
+        <button>Contains gnome</button>
+    </a>
+    <a href="/stock/">
+        <button>Average Stock</button>
+    </a>
+    <a href="/mostexpensive/">
+        <button>Most expensive available</button>
+    </a>
 </nav>
 <table>
 
@@ -29,10 +39,10 @@
 
     <tbody>
     <tr th:each="item : ${items}">
-        <td th:text="${item.getName()}"></td>
-        <td th:text="${item.getDescription()}"></td>
-        <td th:text="${item.displayPrice()}"></td>
-        <td th:text="${item.getQuantityOfStock()}"></td>
+        <td class="name" th:text="${item.getName()}"></td>
+        <td class="desciption" th:text="${item.getDescription()}"></td>
+        <td class="number" th:text="${item.displayPrice()}"></td>
+        <td class="number" th:text="${item.getQuantityOfStock()}"></td>
     </tr>
     </tbody>
 

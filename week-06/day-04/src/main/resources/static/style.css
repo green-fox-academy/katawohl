@@ -1,25 +1,23 @@
 html {
-    background-color: #3e94ec;
-    border-collapse: collapse;
     font-family: Helvetica, sans-serif;
 }
 
+h1, hr {
+    color: #43cddf;
+}
+
+hr{
+    border: 1px solid;
+}
+
 table {
+    position: absolute;
     margin: auto;
     width: 856px;
     height: 580px;
-    border-radius: 1em;
     border-collapse: collapse;
     overflow: hidden;
-    color: #6b747c;
-}
-
-tr:nth-child(even) {
-    background-color: #ebebeb;
-}
-
-tr:nth-child(odd) {
-    background-color: #ffffff;
+    color: #000000;
 }
 
 tr:last-child{
@@ -32,23 +30,53 @@ th, td {
 }
 
 th {
-    background-color: #1b1e24;
+    background-color: #62efff;
     font-size: 34px;
-    font-weight: normal;
-    border-bottom: 5px #a8abb6 solid;
-    border-left: 2px #a8abb6 solid;
+    font-weight: bold;
+    border-bottom: 5px #ffffff solid;
+    border-left: 2px #ffffff solid;
 }
 
 th:first-child {
     border-left: hidden;
 }
 
-td {
-    font-size: 28px;
-    border-left: 2px #a8abb6 solid;
-    border-bottom: 2px #a8abb6 solid;
+.name{
+    font-size: 18px;
+}
+
+.description{
+    font-size: 14px;
+}
+
+.number{
+    font-size: 24px;
 }
 
 td:first-child {
     border-left: hidden;
+}
+
+nav{
+    margin: auto;
+    position: relative;
+}
+
+button{
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    margin: 10px;
+    border: 1px #f44336 solid;
+    border-radius: 1em;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
 }

@@ -29,5 +29,10 @@ public class MainController {
     model.addAttribute("items", shopItems);
     return "index";
   }
+
+  @GetMapping(value = "available")
+  public String getAvailable(){
+    return "jf";
+  }
 }
 
