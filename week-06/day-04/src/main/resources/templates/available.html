@@ -38,7 +38,7 @@
     </thead>
 
     <tbody>
-    <tr th:each="item : ${items}">
+    <tr th:each="item : ${availableItems}">
         <td class="name" th:text="${item.getName()}"></td>
         <td class="desciption" th:text="${item.getDescription()}"></td>
         <td class="number" th:text="${item.displayPrice()}"></td>

@@ -75,8 +75,14 @@ button{
     display: inline-block;
     font-size: 12px;
     font-weight: bold;
+    cursor: pointer;
 }
 
-a{
+button:hover {
+    background-color: #62efff;
+    border-color: #62efff;
+}
+
+a {
     text-decoration: none;
 }

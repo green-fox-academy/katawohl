@@ -4,6 +4,7 @@ import com.greenfoxacademy.webshop.models.ShopItem;
 import com.greenfoxacademy.webshop.models.ShopItemList;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ public class MainController {
     shopItems.add(new ShopItem("Solar Lantern", "To light up your garden gnomes dark " +
         "nights", 17.3, 11));
     shopItems.add(new ShopItem("Bird Bath", "Give some water for your garden gnome's best " +
-        "friends", 37.9, 2));
+        "friends", 37.9, 0));
   }
 
   @GetMapping(value = "main")
@@ -30,9 +31,13 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping(value = "available")
-  public String getAvailable(){
-    return "jf";
+  @GetMapping(value = "only-available")
+  public String getAvailable(Model model){
+   List<ShopItem> availableItems = shopItems.stream()
+        .filter(item -> item.getQuantityOfStock() !=0)
+        .collect(Collectors.toList());
+   model.addAttribute("availableItems", availableItems);
+    return "available";
   }
 }
 
