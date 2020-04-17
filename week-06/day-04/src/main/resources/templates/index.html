@@ -13,7 +13,7 @@
     <a href="/only-available/">
         <button>Only available</button>
     </a>
-    <a href="/cheapest/">
+    <a href="/cheapest-first/">
         <button>Cheapest First</button>
     </a>
     <a href="/gnome/">
@@ -40,7 +40,7 @@
     <tbody>
     <tr th:each="item : ${items}">
         <td class="name" th:text="${item.getName()}"></td>
-        <td class="desciption" th:text="${item.getDescription()}"></td>
+        <td class="description" th:text="${item.getDescription()}"></td>
         <td class="number" th:text="${item.displayPrice()}"></td>
         <td class="number" th:text="${item.getQuantityOfStock()}"></td>
     </tr>

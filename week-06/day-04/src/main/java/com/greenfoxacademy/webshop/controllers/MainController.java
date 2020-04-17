@@ -3,6 +3,7 @@ package com.greenfoxacademy.webshop.controllers;
 import com.greenfoxacademy.webshop.models.ShopItem;
 import com.greenfoxacademy.webshop.models.ShopItemList;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
@@ -36,8 +37,17 @@ public class MainController {
    List<ShopItem> availableItems = shopItems.stream()
         .filter(item -> item.getQuantityOfStock() !=0)
         .collect(Collectors.toList());
-   model.addAttribute("availableItems", availableItems);
-    return "available";
+   model.addAttribute("items", availableItems);
+    return "index";
+  }
+
+  @GetMapping(value = "cheapest-first")
+  public String orderCheapest(Model model){
+    List<ShopItem> cheapestOrder = shopItems.stream()
+        .sorted(Comparator.comparingDouble(ShopItem::getPrice))
+        .collect(Collectors.toList());
+    model.addAttribute("items", cheapestOrder);
+    return "index";
   }
 }
 
