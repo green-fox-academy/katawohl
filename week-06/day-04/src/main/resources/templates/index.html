@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Awesome Webshop</title>
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+<h1>My Shop</h1>
+<hr>
+
+<nav>
+    <a href="/available/">Only Available</a>
+    <a href="/cheapest/">Cheapest First</a>
+    <a href="/gnome/">Contains gnome</a>
+    <a href="/stock/">Average Stock</a>
+    <a href="/mostexpensive/">Most expensive available</a>
+</nav>
+<table>
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of Stock</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.getName()}"></td>
+        <td th:text="${item.getDescription()}"></td>
+        <td th:text="${item.displayPrice()}"></td>
+        <td th:text="${item.getQuantityOfStock()}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>
