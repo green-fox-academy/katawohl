@@ -18,7 +18,7 @@ public class MainController {
   public MainController() {
     shopItems.add(new ShopItem("Garden Gnome", "Funny and pretty friend for the garden",
         222, 4));
-    shopItems.add(new ShopItem("Garden Hose", "The perfect tool to water your garden friend"
+    shopItems.add(new ShopItem("Garden Hose", "The perfect tool to water your garden gnome"
         , 11.4, 6));
     shopItems.add(new ShopItem("Solar Lantern", "Light up the dark nights in the garden", 17.3
         , 11));
@@ -47,6 +47,15 @@ public class MainController {
         .sorted(Comparator.comparingDouble(ShopItem::getPrice))
         .collect(Collectors.toList());
     model.addAttribute("items", cheapestOrder);
+    return "index";
+  }
+
+  @GetMapping(value = "gnome")
+  public String giveGnome(Model model) {
+    List<ShopItem> containsGnome = shopItems.stream()
+        .filter(shopItem -> shopItem.getName().toLowerCase().contains("gnome") || shopItem.getDescription().toLowerCase().contains("gnome"))
+        .collect(Collectors.toList());
+    model.addAttribute("items", containsGnome);
     return "index";
   }
 }
