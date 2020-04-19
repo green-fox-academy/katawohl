@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class MainController {
   List<ShopItem> shopItems = new ArrayList<>();
 
-  public MainController(){
+  public MainController() {
     shopItems.add(new ShopItem("Garden Gnome", "Funny and pretty friend for the garden",
         222, 4));
-    shopItems.add(new ShopItem("Garden Hose", "The perfect tool to water your garden gnome"
+    shopItems.add(new ShopItem("Garden Hose", "The perfect tool to water your garden friend"
         , 11.4, 6));
-    shopItems.add(new ShopItem("Solar Lantern", "To light up your garden gnomes dark " +
-        "nights", 17.3, 11));
-    shopItems.add(new ShopItem("Bird Bath", "Give water for your garden gnome's " +
-        "friends", 37.9, 0));
+    shopItems.add(new ShopItem("Solar Lantern", "Light up the dark nights in the garden", 17.3
+        , 11));
+    shopItems.add(new ShopItem("Bird Bath", "Give water for the chirpy visitors of the garden",
+        37.9, 0));
   }
 
   @GetMapping(value = "main")
@@ -33,16 +33,16 @@ public class MainController {
   }
 
   @GetMapping(value = "only-available")
-  public String getAvailable(Model model){
-   List<ShopItem> availableItems = shopItems.stream()
-        .filter(item -> item.getQuantityOfStock() !=0)
+  public String getAvailable(Model model) {
+    List<ShopItem> availableItems = shopItems.stream()
+        .filter(item -> item.getQuantityOfStock() != 0)
         .collect(Collectors.toList());
-   model.addAttribute("items", availableItems);
+    model.addAttribute("items", availableItems);
     return "index";
   }
 
   @GetMapping(value = "cheapest-first")
-  public String orderCheapest(Model model){
+  public String orderCheapest(Model model) {
     List<ShopItem> cheapestOrder = shopItems.stream()
         .sorted(Comparator.comparingDouble(ShopItem::getPrice))
         .collect(Collectors.toList());
