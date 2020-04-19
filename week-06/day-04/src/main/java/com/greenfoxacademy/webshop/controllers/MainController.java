@@ -58,5 +58,15 @@ public class MainController {
     model.addAttribute("items", containsGnome);
     return "index";
   }
+
+  @GetMapping(value = "stock")
+  public String giveAverageStock(Model model) {
+    double average = shopItems.stream()
+        .mapToDouble(ShopItem::getQuantityOfStock)
+        .average()
+        .getAsDouble();
+    model.addAttribute("average", average);
+    return "stock";
+  }
 }
 

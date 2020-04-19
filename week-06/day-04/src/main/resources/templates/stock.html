@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The Awesome Webshop</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+<h1><a class="header-anchor" href="/main/">My Shop</a></h1>
+<hr>
+
+<nav>
+    <a href="/only-available/">
+        <button>Only available</button>
+    </a>
+    <a href="/cheapest-first/">
+        <button>Cheapest First</button>
+    </a>
+    <a href="/gnome/">
+        <button>Contains gnome</button>
+    </a>
+    <a href="/stock/">
+        <button>Average Stock</button>
+    </a>
+    <a href="/mostexpensive/">
+        <button>Most expensive available</button>
+    </a>
+</nav>
+
+<label for="search-bar">Search for:</label>
+<input type="text" name="search-bar" id="search-bar" placeholder="...something like gnome">
+<button class="search-button">Search</button>
+
+<h2>Average Stock: <span th:text="${average}"></span></h2>
+
+</body>
+</html>
