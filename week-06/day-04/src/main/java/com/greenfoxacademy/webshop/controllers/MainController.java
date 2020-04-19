@@ -5,10 +5,12 @@ import com.greenfoxacademy.webshop.models.ShopItemList;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -61,12 +63,29 @@ public class MainController {
 
   @GetMapping(value = "stock")
   public String giveAverageStock(Model model) {
-    double average = shopItems.stream()
+    double averagePrice = shopItems.stream()
         .mapToDouble(ShopItem::getQuantityOfStock)
         .average()
         .getAsDouble();
-    model.addAttribute("average", average);
+    String averageToDisplay = "Average stock: " + averagePrice;
+    model.addAttribute("stringToDisplay", averageToDisplay);
     return "stock";
+  }
+
+  @GetMapping(value = "mostexpensive")
+  public String giveMostExpensive(Model model) {
+    String mostExpensiveName = shopItems.stream()
+        .max(Comparator.comparingDouble(ShopItem::getPrice))
+        .map(ShopItem::getName)
+        .orElse(null);;
+    String mostExpensive = "The most expensive item is : " + mostExpensiveName;
+    model.addAttribute("stringToDisplay", mostExpensive);
+    return "stock";
+  }
+
+  @PostMapping(value = "search")
+  public String filterBySearchName(Model model){
+    return "index";
   }
 }
 
