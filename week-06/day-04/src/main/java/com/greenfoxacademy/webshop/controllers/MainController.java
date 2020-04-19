@@ -22,7 +22,7 @@ public class MainController {
         , 11.4, 6));
     shopItems.add(new ShopItem("Solar Lantern", "To light up your garden gnomes dark " +
         "nights", 17.3, 11));
-    shopItems.add(new ShopItem("Bird Bath", "Give some water for your garden gnome's best " +
+    shopItems.add(new ShopItem("Bird Bath", "Give water for your garden gnome's " +
         "friends", 37.9, 0));
   }
 
