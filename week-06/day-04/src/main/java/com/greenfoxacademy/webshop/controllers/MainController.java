@@ -72,19 +72,19 @@ public class MainController {
     return "stock";
   }
 
-  @GetMapping(value = "mostexpensive")
+  @GetMapping(value = "most-expensive")
   public String giveMostExpensive(Model model) {
     String mostExpensiveName = shopItems.stream()
         .max(Comparator.comparingDouble(ShopItem::getPrice))
         .map(ShopItem::getName)
-        .orElse(null);;
+        .orElse(null);
     String mostExpensive = "The most expensive item is : " + mostExpensiveName;
     model.addAttribute("stringToDisplay", mostExpensive);
     return "stock";
   }
 
   @PostMapping(value = "search")
-  public String filterBySearchName(Model model){
+  public String filterBySearchName(Model model) {
     return "index";
   }
 }
