@@ -13,8 +13,5 @@ public class Exercise2 {
         .filter(number -> number >= 0)
         .map(number -> number *= number)
         .forEach(System.out::println);
-
   }
-
 }
-
