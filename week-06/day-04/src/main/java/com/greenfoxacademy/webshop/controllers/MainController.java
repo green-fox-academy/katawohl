@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -84,7 +86,7 @@ public class MainController {
     return "stock";
   }
 
-  @GetMapping(value = "search")
+  @RequestMapping(value = "/search", method = RequestMethod.POST)
   public String filterBySearchTerm(@RequestParam(name = "searchTerm") String searchTerm, Model model) {
     List<ShopItem> searchResult = shopItems.stream()
         .filter(shopItem -> shopItem.getName().toLowerCase().contains(searchTerm.toLowerCase()) || shopItem.getDescription().toLowerCase().contains(searchTerm.toLowerCase()))
