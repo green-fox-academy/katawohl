@@ -7,6 +7,9 @@
     <meta charset="utf-8" />
 </head>
 <body>
+
+<h1>The Bank of Pride Lands</h1>
+
 <table>
     <tr>
         <th>Name</th>
@@ -18,7 +21,7 @@
 
     </tr>
     <tr th:each="account:${accounts}" th:object="${account}"
-        th:style="${account.monarchyStatus.name() == 'royal' ? 'color:orange': 'color:black'}">
+        th:style="${account.monarchyStatus.name() == 'royal' ? 'color:orange': 'color:green'}">
         <td th:text="*{name}"></td>
         <td th:text="*{displayBalance()}"></td>
         <td th:text="*{animalType}"></td>

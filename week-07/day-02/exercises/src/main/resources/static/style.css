@@ -1,32 +1,16 @@
-html {
-    font-family: 'Nunito', sans-serif;
-}
-
 body {
     margin-left: 10%;
     margin-right: 10%;
     padding: 10px;
+    font-family: 'Nunito', sans-serif;
 }
 
-.header-anchor {
+h1{
     font-size: 40px;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #43cddf;
-}
-
-hr {
-    color: #43cddf;
-    border: 1px solid;
-    padding-left: 10%;
-    padding-right: 10%;
-}
-
-
-nav {
-    margin-bottom: 15px;
-    position: relative;
-    width: auto;
+    color: #FF3C38;
+    background-color: white;
 }
 
 button {
@@ -46,8 +30,8 @@ button {
 }
 
 button:hover {
-    background-color: #62efff;
-    border-color: #62efff;
+    background-color: #FFF275;
+    border-color: #FFF275;
 }
 
 a {
@@ -56,13 +40,13 @@ a {
 
 label {
     display: block;
-    color: #f44336;
+    color: #A23E48;
     font-size: 18px;
     font-weight: bolder;
 }
 
 input {
-    border: 2px #f44336 solid;
+    border: 2px #A23E48 solid;
     border-radius: 4px;
     font-size: 22px;
     padding: 10px;
@@ -85,6 +69,7 @@ table {
     border-collapse: collapse;
     overflow: hidden;
     color: #000000;
+    background-color: white;
 }
 
 tr:last-child {
@@ -97,7 +82,7 @@ th, td {
 }
 
 th {
-    background-color: #62efff;
+    background-color: #FF8C42;
     font-size: 26px;
     font-weight: bold;
     border-bottom: 5px #ffffff solid;
