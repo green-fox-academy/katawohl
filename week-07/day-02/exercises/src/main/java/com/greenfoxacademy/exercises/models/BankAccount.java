@@ -1,8 +1,11 @@
 package com.greenfoxacademy.exercises.models;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class BankAccount {
   private String name;
-  private int balance;
+  private double balance;
   private String animalType;
 
   public BankAccount(String name, int balance, String animalType) {
@@ -11,11 +14,16 @@ public class BankAccount {
     this.animalType = animalType;
   }
 
+  public String displayBalance() {
+    String priceAsCurrency = String.format("%.2f", balance) + " Zebra";
+    return priceAsCurrency;
+  }
+
   public String getName() {
     return name;
   }
 
-  public int getBalance() {
+  public double getBalance() {
     return balance;
   }
 
