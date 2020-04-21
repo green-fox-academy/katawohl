@@ -1,6 +1,8 @@
 package com.greenfoxacademy.exercises.controllers;
 
 import com.greenfoxacademy.exercises.models.BankAccount;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,5 +23,20 @@ public class MainController {
     String stringToDisplay = "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>";
     model.addAttribute("text", stringToDisplay);
     return "htmlception";
+  }
+
+  @GetMapping("/accounts")
+  public String showAccounts(Model model){
+    List<BankAccount> bankAccounts = new ArrayList<>();
+
+    bankAccounts.add(new BankAccount("Simba", 2000, "lion"));
+    bankAccounts.add(new BankAccount("Rafiki", 17894, "mandrill"));
+    bankAccounts.add(new BankAccount("Zazu", 478, "red-billed hornbill"));
+    bankAccounts.add(new BankAccount("Banzai", -677, "hyena"));
+    bankAccounts.add(new BankAccount("Scar", 560049000, "lion"));
+
+    model.addAttribute("accounts", bankAccounts);
+
+    return "accounts";
   }
 }
