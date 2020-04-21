@@ -11,11 +11,14 @@
         <th>Name</th>
         <th>Balance</th>
         <th>Species</th>
+        <th>Index</th>
+
     </tr>
     <tr th:each="account:${accounts}" th:object="${account}">
         <td th:text="*{name}"></td>
         <td th:text="*{displayBalance()}"></td>
         <td th:text="*{animalType}"></td>
+        <td th:text="${accountStat.index}"></td>
     </tr>
 </table>
 </body>
