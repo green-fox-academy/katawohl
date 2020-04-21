@@ -12,13 +12,16 @@
         <th>Balance</th>
         <th>Species</th>
         <th>Index</th>
+        <th>Royal account</th>
 
     </tr>
-    <tr th:each="account:${accounts}" th:object="${account}">
+    <tr th:each="account:${accounts}" th:object="${account}"
+        th:style="${account.ifIsKing()==true ? 'color:orange': 'color:black'}">
         <td th:text="*{name}"></td>
         <td th:text="*{displayBalance()}"></td>
         <td th:text="*{animalType}"></td>
         <td th:text="${accountStat.index}"></td>
+        <td th:text="*{ifIsKing()} ? 'Royal' : 'Commoner'"></td>
     </tr>
 </table>
 </body>
