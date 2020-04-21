@@ -1,11 +1,11 @@
 package com.greenfoxacademy.webshop.controllers;
 
 import com.greenfoxacademy.webshop.models.ShopItem;
-import com.greenfoxacademy.webshop.models.ShopItemList;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MainController {
@@ -31,13 +30,13 @@ public class MainController {
         37.9, 0));
   }
 
-  @GetMapping(value = "main")
+  @GetMapping("main")
   public String getIndex(Model model) {
     model.addAttribute("items", shopItems);
     return "index";
   }
 
-  @GetMapping(value = "only-available")
+  @GetMapping("only-available")
   public String getAvailable(Model model) {
     List<ShopItem> availableItems = shopItems.stream()
         .filter(item -> item.getQuantityOfStock() != 0)
@@ -46,7 +45,7 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping(value = "cheapest-first")
+  @GetMapping("cheapest-first")
   public String orderCheapest(Model model) {
     List<ShopItem> cheapestOrder = shopItems.stream()
         .sorted(Comparator.comparingDouble(ShopItem::getPrice))
@@ -55,7 +54,7 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping(value = "gnome")
+  @GetMapping("gnome")
   public String giveGnome(Model model) {
     List<ShopItem> containsGnome = shopItems.stream()
         .filter(shopItem -> shopItem.getName().toLowerCase().contains("gnome") || shopItem.getDescription().toLowerCase().contains("gnome"))
@@ -64,30 +63,45 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping(value = "stock")
+  @GetMapping("stock")
   public String giveAverageStock(Model model) {
-    double averagePrice = shopItems.stream()
+    OptionalDouble averagePrice = shopItems.stream()
         .mapToDouble(ShopItem::getQuantityOfStock)
-        .average()
-        .getAsDouble();
-    String averageToDisplay = "Average stock: " + averagePrice;
+        .average();
+
+    String averageToDisplay;
+
+    if (averagePrice.isPresent()){
+      averageToDisplay = "Average stock: " + averagePrice;
+    } else {
+      averageToDisplay = "No item available";
+    }
+
     model.addAttribute("stringToDisplay", averageToDisplay);
     return "stock";
   }
 
-  @GetMapping(value = "most-expensive")
+  @GetMapping("most-expensive")
   public String giveMostExpensive(Model model) {
-    String mostExpensiveName = shopItems.stream()
+    Optional<String> mostExpensiveName = shopItems.stream()
         .max(Comparator.comparingDouble(ShopItem::getPrice))
-        .map(ShopItem::getName)
-        .orElse(null);
-    String mostExpensive = "The most expensive item is : " + mostExpensiveName;
+        .map(ShopItem::getName);
+
+    String mostExpensive;
+
+    if (mostExpensiveName.isPresent()){
+      mostExpensive = "The most expensive item is : " + mostExpensiveName;
+    } else {
+      mostExpensive = "No item available";
+    }
+
     model.addAttribute("stringToDisplay", mostExpensive);
     return "stock";
   }
 
-  @RequestMapping(value = "/search", method = RequestMethod.POST)
-  public String filterBySearchTerm(@RequestParam(name = "searchTerm") String searchTerm, Model model) {
+  @PostMapping("/search")
+  public String filterBySearchTerm(@RequestParam(name = "searchTerm") String searchTerm,
+                                   Model model) {
     List<ShopItem> searchResult = shopItems.stream()
         .filter(shopItem -> shopItem.getName().toLowerCase().contains(searchTerm.toLowerCase()) || shopItem.getDescription().toLowerCase().contains(searchTerm.toLowerCase()))
         .collect(Collectors.toList());
