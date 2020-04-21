@@ -1,19 +1,19 @@
 package com.greenfoxacademy.exercises.models;
 
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class BankAccount {
   private String name;
   private double balance;
   private String animalType;
-  private boolean isKing;
+  private MonarchyStatus monarchyStatus;
+  private KindOfFolk kindOfFolk;
 
-  public BankAccount(String name, double balance, String animalType, boolean isKing) {
+  public BankAccount(String name, double balance, String animalType,
+                     MonarchyStatus monarchyStatus, KindOfFolk kindOfFolk) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
-    this.isKing = isKing;
+    this.monarchyStatus = monarchyStatus;
+    this.kindOfFolk = kindOfFolk;
   }
 
   public String displayBalance() {
@@ -29,11 +29,25 @@ public class BankAccount {
     return balance;
   }
 
-  public boolean ifIsKing() {
-    return isKing;
+  public MonarchyStatus getMonarchyStatus() {
+    return monarchyStatus;
   }
 
   public String getAnimalType() {
     return animalType;
+  }
+
+  public KindOfFolk getKindOfFolk() {
+    return kindOfFolk;
+  }
+
+  public enum MonarchyStatus{
+    royal,
+    commoner
+  }
+
+  public enum KindOfFolk{
+    bad,
+    good
   }
 }
