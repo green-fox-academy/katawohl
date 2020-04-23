@@ -29,4 +29,20 @@ public class UtilityController {
     model.addAttribute("ifValid", ifValid);
     return "validemail";
   }
+
+  @GetMapping("/useful/encoder")
+  public String encodeText(@RequestParam String text, @RequestParam int num, Model model) {
+    String resultText = utilityService.caesar(text, num);
+    model.addAttribute("text", resultText);
+    return "index";
+  }
+
+  @GetMapping("/useful/decoder")
+  public String decodeText(@RequestParam String text, @RequestParam int num, Model model) {
+    int negNum = -num;
+    String resultText = utilityService.caesar(text, negNum);
+    model.addAttribute("text", resultText);
+    return "index";
+  }
+
 }
