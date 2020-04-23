@@ -1,9 +1,11 @@
 package com.greenfoxacdemy.di.utilities;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.ArrayUtils;
 
 @Service
 public class UtilityService {
@@ -36,5 +38,24 @@ public class UtilityService {
       result += (char) (((int) text.charAt(i) + number - offset) % 26 + offset);
     }
     return result;
+  }
+
+  public boolean validateEmail(String email){
+    boolean isEmailVaild;
+
+    char[] emailCharArray = email.toCharArray();
+
+    List<Character> emailCharList = new ArrayList<>();
+    for (char c: emailCharArray) {
+      emailCharList.add(c);
+    }
+
+    if (emailCharList.contains('@') && emailCharList.contains('.')){
+      isEmailVaild = true;
+    } else {
+      isEmailVaild = false;
+    }
+
+    return isEmailVaild;
   }
 }
