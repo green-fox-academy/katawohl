@@ -2,7 +2,6 @@ package com.greenfoxacdemy.di.coloringaround;
 
 import org.springframework.stereotype.Service;
 
-@Service
 public class BlueColor implements MyColor {
   @Override
   public void printColor() {
