@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Fox Academy</title>
@@ -13,14 +13,16 @@
 <img alt="a green fox"
      src="https://raw.githubusercontent.com/green-fox-academy/teaching-materials/master/project/programmer-fox-club/assets/greenfox.png?token=AOPQDECIV4SWBXE3EC5I5HK6VPWZ2">
 
-<p>This is <span th:text="${foxName}"></span>. Currently living on pizza and lemonade. He knows 2 tricks.</p>
+<p>This is <span th:text="${foxName}"></span>. Currently living on <span th:text="${food}"></span> and <span
+        th:text="${drink}"></span>. She/he knows <span th:text="${numOfTricks}"></span> tricks.</p>
 
 <h1>Known tricks</h1>
 
-<ul>
-    <li>write HTML</li>
-    <li>Code in Java</li>
+<ul th:each="trick:${listOfTricks}">
+       <li th:text="${trick}"></li>
 </ul>
+
+<p th:if="${numOfTricks} == 0">No tricks yet, time to learn!</p>
 
 </body>
 </html>
