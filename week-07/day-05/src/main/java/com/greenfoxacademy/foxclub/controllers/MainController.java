@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
 
-  @GetMapping("/{name}")
+  @GetMapping("/")
   public String showMain(@RequestParam String name, Model model) {
     model.addAttribute("foxName", name);
     return "index";
