@@ -8,20 +8,24 @@
 <body>
 
 <ul>
-    <li><a href="/">Information</a></li>
-   <li><a href="/nutritionStore">Nutrition Store</a></li>
+    <li><a th:href="'/name?name='+${foxName}">Information</a></li>
+    <li><a th:href="'/nutritionStore?name='+${foxName}">Nutrition Store</a></li>
     <li><a href="">Trick Center</a></li>
 </ul>
 
-<form>
+<form action="/updateNutrition" method="post">
     <label for="foodType">Food</label>
-    <select type="" id="foodType">
-
+    <select name="food" type="" id="foodType" >
+        <option th:value="${food}" th:each="food:${foods}">
+            <span th:text="${food}"></span>
+        </option>
     </select>
 
     <label for="drinkType">Drink</label>
-    <select id="drinkType">
-
+    <select name="drink" id="drinkType">
+        <option th:value="${drink}" th:each="drink:${drinks}">
+            <span th:text="${drink}"></span>
+        </option>
     </select>
 
     <button>Change</button>

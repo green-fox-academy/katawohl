@@ -1,8 +1,12 @@
 package com.greenfoxacademy.foxclub.controllers;
 
+import com.greenfoxacademy.foxclub.models.Drink;
+import com.greenfoxacademy.foxclub.models.Food;
 import com.greenfoxacademy.foxclub.models.Fox;
 import com.greenfoxacademy.foxclub.service.FoxService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +24,16 @@ public class MainController {
     this.foxService = foxService;
   }
 
+  @GetMapping("/login")
+  public String showLogin() {
+    return "login";
+  }
+
+  @PostMapping("/login")
+  public String enterName(@RequestParam String name, Model model) {
+    return "redirect:/?name=" + name;
+  }
+
   @GetMapping("/")
   public String showMain(@RequestParam String name, Model model) {
     Fox fox = new Fox(name);
@@ -32,14 +46,35 @@ public class MainController {
     return "index";
   }
 
-  @GetMapping("/login")
-  public String showLogin() {
-    return "login";
+  @GetMapping("/nutritionStore")
+  public String showNutrition(@RequestParam String name, Model model) {
+    List<Food> foodList = Arrays.asList(Food.values());
+    List<Drink> drinkList = Arrays.asList(Drink.values());
+
+    model.addAttribute("foxName", foxService.getFoxByName(name).getName());
+    model.addAttribute("foods", foodList);
+    model.addAttribute("drinks", drinkList);
+    return "nutrition";
   }
 
-  @PostMapping("/login")
-  public String enterName(@RequestParam String name, Model model) {
-    String redirect = "redirect:/?name=" + name;
-    return redirect;
+  @PostMapping("/changeNutrition")
+  public String updateNutrition(@RequestParam String name, @RequestParam Food food,
+                                @RequestParam Drink drink) {
+    return "redirect:/?name=" + name + food+ drink;
+  }
+
+  @GetMapping("/{name}")
+  public String showFoxInfo(@PathVariable String name, @RequestParam(required = false) Food food,
+                            @RequestParam(required = false) Drink drink, Model model) {
+    Fox fox = foxService.getFoxByName(name);
+    fox.setFood(food);
+    fox.setDrink(drink);
+
+    model.addAttribute("foxName", fox.getName());
+    model.addAttribute("food", fox.getFood());
+    model.addAttribute("drink", fox.getDrink());
+    model.addAttribute("numOfTricks", fox.getTricks().size());
+    model.addAttribute("listOfTricks", fox.getTricks());
+    return "index";
   }
 }
