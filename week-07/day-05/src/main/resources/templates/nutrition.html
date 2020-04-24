@@ -1,10 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Nutrition Store</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
-$END$
+
+<ul>
+    <li><a href="/">Information</a></li>
+   <li><a href="/nutritionStore">Nutrition Store</a></li>
+    <li><a href="">Trick Center</a></li>
+</ul>
+
+<form>
+    <label for="foodType">Food</label>
+    <select type="" id="foodType">
+
+    </select>
+
+    <label for="drinkType">Drink</label>
+    <select id="drinkType">
+
+    </select>
+
+    <button>Change</button>
+</form>
+
 </body>
 </html>
