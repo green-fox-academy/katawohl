@@ -3,7 +3,9 @@ package com.greenfoxacademy.foxclub.controllers;
 import com.greenfoxacademy.foxclub.models.Drink;
 import com.greenfoxacademy.foxclub.models.Food;
 import com.greenfoxacademy.foxclub.models.Fox;
+import com.greenfoxacademy.foxclub.models.Trick;
 import com.greenfoxacademy.foxclub.service.FoxService;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -77,5 +79,29 @@ public class MainController {
     model.addAttribute("numOfTricks", fox.getTricks().size());
     model.addAttribute("listOfTricks", fox.getTricks());
     return "index";
+  }
+
+  @GetMapping("/trickcenter")
+  public String showTrickCenter(@RequestParam String name, Model model){
+    List<Trick> trickList = Arrays.asList(Trick.values());
+
+    List<Trick> foxTricks = new ArrayList<>();
+    for (Trick trick : trickList) {
+      if (!foxService.getFoxByName(name).getTricks().contains(trick)){
+        foxTricks.add(trick);
+      }
+    }
+
+    model.addAttribute("foxName", foxService.getFoxByName(name).getName());
+    model.addAttribute("trickList", foxTricks);
+    return "trickcenter";
+  }
+
+  @PostMapping("/updateTrick")
+  public String updateNutrition(@RequestParam String name, @RequestParam Trick trick) {
+    Fox fox = foxService.getFoxByName(name);
+    fox.addTrick(trick);
+
+    return "redirect:/" + name + "info";
   }
 }

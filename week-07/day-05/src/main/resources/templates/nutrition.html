@@ -10,7 +10,7 @@
 <ul>
     <li><a th:href="'/'+${foxName}+'info'">Information</a></li>
     <li><a th:href="'/nutritionStore?name='+${foxName}">Nutrition Store</a></li>
-    <li><a href="">Trick Center</a></li>
+    <li><a th:href="'/trickcenter?name='+${foxName}">Trick Center</a></li>
 </ul>
 
 <form th:action="'/updateNutrition?name='+${foxName}" method="post">
