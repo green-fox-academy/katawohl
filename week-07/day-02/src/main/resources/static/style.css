@@ -1,0 +1,106 @@
+body {
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #FF3C38;
+    background-color: white;
+}
+
+button {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    margin: 10px 22px 10px 0px;
+    border: 1px #f44336 solid;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FFF275;
+    border-color: #FFF275;
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    display: block;
+    color: #A23E48;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+input {
+    border: 2px #A23E48 solid;
+    border-radius: 4px;
+    font-size: 22px;
+    padding: 10px;
+    width: 77%;
+    margin-right: 15px;
+}
+
+table {
+    position: absolute;
+    margin: auto;
+    width: 78%;
+    height: auto;
+    border-collapse: collapse;
+    overflow: hidden;
+    color: #000000;
+    background-color: white;
+}
+
+tr:last-child {
+    border-bottom: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: 20px;
+}
+
+th {
+    background-color: #FF8C42;
+    font-size: 26px;
+    font-weight: bold;
+    border-bottom: 5px #ffffff solid;
+    border-left: 2px #ffffff solid;
+    text-align: center;
+}
+
+th:first-child {
+    border-left: hidden;
+}
+
+td:first-child {
+    border-left: hidden;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 16px;
+}
+
+.number {
+    font-size: 24px;
+    text-align: center;
+}
