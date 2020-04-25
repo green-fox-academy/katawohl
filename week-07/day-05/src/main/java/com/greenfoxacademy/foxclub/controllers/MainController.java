@@ -57,18 +57,19 @@ public class MainController {
     return "nutrition";
   }
 
-  @PostMapping("/changeNutrition")
+  @PostMapping("/updateNutrition")
   public String updateNutrition(@RequestParam String name, @RequestParam Food food,
                                 @RequestParam Drink drink) {
-    return "redirect:/?name=" + name + food+ drink;
-  }
-
-  @GetMapping("/{name}")
-  public String showFoxInfo(@PathVariable String name, @RequestParam(required = false) Food food,
-                            @RequestParam(required = false) Drink drink, Model model) {
     Fox fox = foxService.getFoxByName(name);
     fox.setFood(food);
     fox.setDrink(drink);
+
+    return "redirect:/" + name + "info";
+  }
+
+  @GetMapping("/{name}info")
+  public String showFoxInfo(@PathVariable String name, Model model) {
+    Fox fox = foxService.getFoxByName(name);
 
     model.addAttribute("foxName", fox.getName());
     model.addAttribute("food", fox.getFood());
