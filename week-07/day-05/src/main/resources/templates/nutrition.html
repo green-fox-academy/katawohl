@@ -17,14 +17,14 @@
     <label for="foodType">Food</label>
     <select name="food"  id="foodType" >
         <option th:value="${food}" th:each="food:${foods}">
-            <span th:text="${food}"></span>
+            <span th:text="${food.foodName}"></span>
         </option>
     </select>
 
     <label for="drinkType">Drink</label>
     <select name="drink" id="drinkType">
         <option th:value="${drink}" th:each="drink:${drinks}">
-            <span th:text="${drink}"></span>
+            <span th:text="${drink.drinkName}"></span>
         </option>
     </select>
 
