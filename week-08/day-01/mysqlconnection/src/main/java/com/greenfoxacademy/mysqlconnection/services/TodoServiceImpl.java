@@ -45,7 +45,7 @@ public class TodoServiceImpl implements TodoService {
   }
 
   public void deleteById(long id) {
-    Todo todo = todoRepository.findById(id).get();
-    delete(todo);
+    Optional<Todo> todoToDelete = todoRepository.findById(id);
+    todoToDelete.ifPresent(todo -> todoRepository.delete(todo));
   }
 }
