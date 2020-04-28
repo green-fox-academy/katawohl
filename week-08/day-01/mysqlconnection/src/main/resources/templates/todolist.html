@@ -23,12 +23,14 @@
     <tr th:each="todo : ${todos}">
         <td class="id" th:text="${todo.id}"></td>
         <td class="title" th:text="${todo.title}"></td>
-        <td class="urgent" th:text="${todo.urgent}"></td>
-        <td class="done" th:text="${todo.done}"></td>
+        <td class="urgent" th:text="${todo.isUrgent}"></td>
+        <td class="done" th:text="${todo.isDone}"></td>
     </tr>
     </tbody>
 
 </table>
+
+<button><a href="/todo/add">Add a todo to your list</a></button>
 
 </body>
 </html>
