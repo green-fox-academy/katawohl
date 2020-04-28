@@ -20,11 +20,14 @@
     </thead>
 
     <tbody>
-    <tr th:each="todo : ${todos}">
-        <td class="id" th:text="${todo.id}"></td>
-        <td class="title" th:text="${todo.title}"></td>
-        <td class="urgent" th:text="${todo.isUrgent}"></td>
-        <td class="done" th:text="${todo.isDone}"></td>
+    <tr th:each="todo : ${todos}" th:object="${todo}">
+        <td class="id" th:text="*{id}"></td>
+        <td class="title" th:text="*{title}"></td>
+        <td class="urgent" th:text="*{isUrgent}"></td>
+        <td class="done" th:text="*{isDone}"></td>
+        <td>
+            <a th:href="'/' + *{id} + '/delete'">Delete</a>
+        </td>
     </tr>
     </tbody>
 

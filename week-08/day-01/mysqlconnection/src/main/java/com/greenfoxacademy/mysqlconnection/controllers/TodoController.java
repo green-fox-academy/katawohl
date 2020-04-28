@@ -9,8 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -26,14 +28,15 @@ public class TodoController {
   }
 
   @GetMapping( {"/", "/list"})
-  public String list(@RequestParam(value = "isDone", required = false) boolean isDone, Model model) {
+  public String list(@RequestParam(value = "isDone", required = false) boolean isDone,
+                     Model model) {
     List<Todo> todos = todoService.getTodos().stream()
         .filter(Todo::isIsDone)
         .collect(Collectors.toList());
 
     List<Todo> todoList;
 
-    if (isDone){
+    if (isDone) {
       todoList = todos;
     } else {
       todoList = todoService.getTodos();
@@ -45,16 +48,21 @@ public class TodoController {
   }
 
   @GetMapping("/add")
-  public String showAddPage(Model model){
-       model.addAttribute("todo", new Todo());
+  public String showAddPage(Model model) {
+    model.addAttribute("todo", new Todo());
     return "addpage";
   }
 
   @PostMapping("/add")
-  public String addNewTodo(@ModelAttribute Todo todo){
+  public String addNewTodo(@ModelAttribute Todo todo) {
     todoService.addTodo(todo);
     return "redirect:/todo/list";
   }
 
-}
+  @RequestMapping(path = "/{id}/delete", method = RequestMethod.GET)
+  public String deleteTodo(@PathVariable(name = "id") long id) {
+    todoService.deleteById(id);
+    return "redirect:/todo/list";
+  }
 
+}
