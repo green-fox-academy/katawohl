@@ -52,9 +52,7 @@ public class TodoServiceImpl implements TodoService {
   @Override
   public Todo findById(long id) {
     Optional<Todo> optionalTodo = todoRepository.findById(id);
-    Todo todo;
-
-    todo = optionalTodo.orElse(null);
+    Todo todo = optionalTodo.orElse(null);
 
     return todo;
   }
