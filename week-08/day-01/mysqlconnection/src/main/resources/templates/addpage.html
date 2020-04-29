@@ -11,10 +11,10 @@
     <input id="newTodo" type="text" th:field="*{title}" required><br>
 
     <p>Is it urgent?</p>
-    <input type="radio" id="urgent" name="isUrgent" th:field="*{urgent}" th:value="True">
+    <input type="radio" id="urgent" name="urgent" th:field="*{urgent}" th:value="True">
     <label for="urgent">Yes</label><br>
 
-    <input type="radio" id="notUrgent" name="isUrgent" th:field="*{urgent}" th:value="False">
+    <input type="radio" id="notUrgent" name="urgent" th:field="*{urgent}" th:value="False">
     <label for="notUrgent">No</label><br>
 
     <button type="submit">Submit</button>

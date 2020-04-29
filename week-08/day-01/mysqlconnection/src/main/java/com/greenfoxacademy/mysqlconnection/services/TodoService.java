@@ -9,4 +9,5 @@ public interface TodoService {
   List<Todo> getTodos();
   void delete(Todo todo);
   Todo findById(long id);
+  void deleteById(long id);
 }

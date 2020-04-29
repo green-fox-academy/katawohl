@@ -55,4 +55,21 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
+  @GetMapping("/{id}/edit")
+  public String showEditPage(@PathVariable(name = "id") long id, Model model) {
+    Todo todo = todoService.findById(id);
+    model.addAttribute("todo", todo);
+    return "editpage";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String editTodo(@ModelAttribute Todo todo, String title, Boolean urgent, Boolean done) {
+    todoService.setNewTitle(todo, title);
+    todoService.setNewUrgent(todo, urgent);
+    todoService.setNewDone(todo, done);
+
+    todoService.addTodo(todo);
+    return "redirect:/todo/list";
+  }
+
 }

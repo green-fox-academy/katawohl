@@ -17,18 +17,18 @@ public class TodoServiceImpl implements TodoService {
   public TodoServiceImpl(TodoRepository todoRepository) {
     this.todoRepository = todoRepository;
   }
-  
-  public List<Todo> listDoneTodos(Boolean isDone){
+
+  public List<Todo> listDoneTodos(Boolean isDone) {
     List<Todo> todos;
-    
-    if (isDone != null){
+
+    if (isDone != null) {
       todos = this.getTodos().stream()
           .filter(todo -> todo.getDone() == isDone)
           .collect(Collectors.toList());
-    } else  {
+    } else {
       todos = this.getTodos();
     }
-    
+
     return todos;
   }
 
@@ -59,8 +59,31 @@ public class TodoServiceImpl implements TodoService {
     return todo;
   }
 
+  @Override
   public void deleteById(long id) {
     Optional<Todo> todoToDelete = todoRepository.findById(id);
     todoToDelete.ifPresent(todo -> todoRepository.delete(todo));
+  }
+
+  public void setNewTitle(Todo todo, String title){
+    if (title != null){
+      todo.setTitle(title);
+    }
+  }
+
+  public void setNewUrgent(Todo todo, Boolean urgent){
+    if (urgent != null){
+      todo.setUrgent(urgent);
+    } else {
+      todo.setUrgent(false);
+    }
+  }
+
+  public void setNewDone(Todo todo, Boolean done){
+    if (done != null){
+      todo.setDone(done);
+    } else {
+      todo.setDone(false);
+    }
   }
 }
