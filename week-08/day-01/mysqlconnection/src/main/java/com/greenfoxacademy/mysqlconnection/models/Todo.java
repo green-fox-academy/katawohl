@@ -42,19 +42,19 @@ public class Todo {
     this.title = title;
   }
 
-  public Boolean isIsUrgent() {
+  public Boolean getUrgent() {
     return isUrgent;
   }
 
-  public void setIsUrgent(Boolean urgent) {
-    this.isUrgent = urgent;
+  public void setUrgent(Boolean urgent) {
+    isUrgent = urgent;
   }
 
-  public Boolean isIsDone() {
+  public Boolean getDone() {
     return isDone;
   }
 
-  public void setIsDone(Boolean done) {
-    this.isDone = done;
+  public void setDone(Boolean done) {
+    isDone = done;
   }
 }

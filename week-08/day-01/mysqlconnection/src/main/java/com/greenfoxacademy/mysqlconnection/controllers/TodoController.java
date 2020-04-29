@@ -28,19 +28,9 @@ public class TodoController {
   }
 
   @GetMapping( {"/", "/list"})
-  public String list(@RequestParam(value = "isDone", required = false) boolean isDone,
+  public String list(@RequestParam(value = "isDone", required = false) Boolean isDone,
                      Model model) {
-    List<Todo> todos = todoService.getTodos().stream()
-        .filter(Todo::isIsDone)
-        .collect(Collectors.toList());
-
-    List<Todo> todoList;
-
-    if (isDone) {
-      todoList = todos;
-    } else {
-      todoList = todoService.getTodos();
-    }
+    List<Todo> todoList = todoService.listDoneTodos(isDone);
 
     model.addAttribute("todos", todoList);
     model.addAttribute("todo", new Todo());

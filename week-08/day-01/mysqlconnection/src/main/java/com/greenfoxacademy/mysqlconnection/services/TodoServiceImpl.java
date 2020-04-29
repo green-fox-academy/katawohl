@@ -5,6 +5,7 @@ import com.greenfoxacademy.mysqlconnection.repository.TodoRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,20 @@ public class TodoServiceImpl implements TodoService {
   @Autowired
   public TodoServiceImpl(TodoRepository todoRepository) {
     this.todoRepository = todoRepository;
+  }
+  
+  public List<Todo> listDoneTodos(Boolean isDone){
+    List<Todo> todos;
+    
+    if (isDone != null){
+      todos = this.getTodos().stream()
+          .filter(todo -> todo.getDone() == isDone)
+          .collect(Collectors.toList());
+    } else  {
+      todos = this.getTodos();
+    }
+    
+    return todos;
   }
 
   @Override
