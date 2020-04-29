@@ -72,4 +72,10 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
+  @GetMapping("/search{title}")
+  public String searchForTodo(@PathVariable(name = "title") String title, Model model){
+    model.addAttribute("todos", todoService.findByTitle(title));
+    return "searchresults";
+  }
+
 }

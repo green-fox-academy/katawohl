@@ -60,27 +60,32 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
+  public List<Todo> findByTitle(String title) {
+    return this.todoRepository.findAllByTitleContains(title);
+  }
+
+  @Override
   public void deleteById(long id) {
     Optional<Todo> todoToDelete = todoRepository.findById(id);
     todoToDelete.ifPresent(todo -> todoRepository.delete(todo));
   }
 
-  public void setNewTitle(Todo todo, String title){
-    if (title != null){
+  public void setNewTitle(Todo todo, String title) {
+    if (title != null) {
       todo.setTitle(title);
     }
   }
 
-  public void setNewUrgent(Todo todo, Boolean urgent){
-    if (urgent != null){
+  public void setNewUrgent(Todo todo, Boolean urgent) {
+    if (urgent != null) {
       todo.setUrgent(urgent);
     } else {
       todo.setUrgent(false);
     }
   }
 
-  public void setNewDone(Todo todo, Boolean done){
-    if (done != null){
+  public void setNewDone(Todo todo, Boolean done) {
+    if (done != null) {
       todo.setDone(done);
     } else {
       todo.setDone(false);
