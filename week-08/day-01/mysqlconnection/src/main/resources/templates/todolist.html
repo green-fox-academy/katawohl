@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<h1>Todos for today</h1>
+<h1>List of todos</h1>
 
 <form action="/todo/search" method="get">
     <label for="searchbar">Search for todos  by keyword in description</label>
@@ -43,6 +43,26 @@
 </table>
 
 <button><a href="/todo/add">Add a todo to your list</a></button>
+
+<h2>List of assignees</h2>
+<table>
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email address</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="assignee : ${assignees}" th:object="${assignee}">
+        <td class="name" th:text="*{name}"></td>
+        <td class="email" th:text="*{email}"></td>
+    </tr>
+    </tbody>
+</table>
+
+<button><a href="/assignee/add">Add an assignee</a></button>
 
 </body>
 </html>

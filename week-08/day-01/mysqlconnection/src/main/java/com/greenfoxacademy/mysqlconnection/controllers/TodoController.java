@@ -1,6 +1,8 @@
 package com.greenfoxacademy.mysqlconnection.controllers;
 
+import com.greenfoxacademy.mysqlconnection.models.Assignee;
 import com.greenfoxacademy.mysqlconnection.models.Todo;
+import com.greenfoxacademy.mysqlconnection.services.AssigneeServiceImpl;
 import com.greenfoxacademy.mysqlconnection.services.TodoServiceImpl;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,17 +23,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class TodoController {
 
   private final TodoServiceImpl todoService;
+  private final AssigneeServiceImpl assigneeService;
 
   @Autowired
-  public TodoController(TodoServiceImpl todoService) {
+  public TodoController(TodoServiceImpl todoService, AssigneeServiceImpl assigneeService) {
     this.todoService = todoService;
+    this.assigneeService = assigneeService;
   }
 
   @GetMapping( {"/", "/list"})
   public String list(@RequestParam(value = "isDone", required = false) Boolean isDone,
                      Model model) {
     List<Todo> todoList = todoService.listDoneTodos(isDone);
+    List<Assignee> assigneeList = assigneeService.returnAllAssignee();
 
+    model.addAttribute("assignees", assigneeList);
     model.addAttribute("todos", todoList);
     model.addAttribute("todo", new Todo());
     return "todolist";
@@ -40,7 +46,7 @@ public class TodoController {
   @GetMapping("/add")
   public String showAddPage(Model model) {
     model.addAttribute("todo", new Todo());
-    return "addpage";
+    return "addtodopage";
   }
 
   @PostMapping("/add")
