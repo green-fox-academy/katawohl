@@ -59,13 +59,8 @@ public class TodoServiceImpl implements TodoService {
 
   @Override
   public List<Todo> findByTitle(String title) {
-    List<Todo> todos = this.getTodos();
-
-    List<Todo> matchingTodos = todos.stream().
-        filter(todo -> todo.getTitle().toLowerCase().contains(title.toLowerCase()))
-        .collect(Collectors.toList());
-
-    return matchingTodos;
+    List<Todo> todos = todoRepository.findTodoByTitleNative(title);
+    return todos;
   }
 
   @Override
