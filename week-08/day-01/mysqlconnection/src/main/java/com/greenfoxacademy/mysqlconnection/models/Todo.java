@@ -1,10 +1,16 @@
 package com.greenfoxacademy.mysqlconnection.models;
 
+import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "todos")
@@ -16,14 +22,22 @@ public class Todo {
   private String title;
   private Boolean isUrgent = false;
   private Boolean isDone = false;
+  @Temporal(TemporalType.DATE)
+  private Date date;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  @JoinColumn
+  private Assignee assignee;
 
   public Todo(String title, boolean isUrgent, boolean isDone) {
     this.title = title;
     this.isUrgent = isUrgent;
     this.isDone = isDone;
+    this.date = new Date();
   }
 
   public Todo() {
+    this.date = new Date();
   }
 
   public long getId() {
@@ -56,5 +70,17 @@ public class Todo {
 
   public void setDone(Boolean done) {
     isDone = done;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public Assignee getAssignee() {
+    return assignee;
+  }
+
+  public void setAssignee(Assignee assignee) {
+    this.assignee = assignee;
   }
 }

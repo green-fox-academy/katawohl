@@ -33,6 +33,7 @@ public class TodoController {
   public String list(@RequestParam(value = "isDone", required = false) Boolean isDone,
                      Model model) {
     model.addAttribute("todos", todoService.listDoneTodos(isDone));
+    model.addAttribute("assignees", assigneeService.returnAllAssignee());
     model.addAttribute("todo", new Todo());
     return "todolist";
   }
@@ -78,10 +79,17 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
-  @GetMapping("/search{title}")
-  public String searchForTodo(@PathVariable(name = "title") String title, Model model){
+  @GetMapping("/search{searchTitle}")
+  public String searchForTodo(@PathVariable(name = "searchTitle") String title, Model model){
     model.addAttribute("todos", todoService.findByTitle(title));
     return "searchresults";
+  }
+
+  @GetMapping("/{id}/assign")
+  public String showAssignPage(@PathVariable(name = "id") long id, Model model){
+    model.addAttribute("todo", todoService.findById(id));
+
+    return "assign";
   }
 
 }

@@ -41,7 +41,7 @@ public class AssigneeController {
   public String deleteTodo(@PathVariable(name = "id") Long id,
                            @ModelAttribute Assignee assignee) {
     assigneeService.deleteById(id);
-    return "redirect:/todo/list";
+    return "redirect:/todo/assignees";
   }
 
   @GetMapping("/{id}/edit")
@@ -53,6 +53,6 @@ public class AssigneeController {
   @PostMapping("/{id}/edit")
   public String editTodo(@ModelAttribute Assignee assignee) {
     assigneeService.addAssignee(assignee);
-    return "redirect:/todo/list";
+    return "redirect:/todo/assignees";
   }
 }
