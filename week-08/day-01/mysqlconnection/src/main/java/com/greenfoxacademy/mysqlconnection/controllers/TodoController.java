@@ -1,10 +1,8 @@
 package com.greenfoxacademy.mysqlconnection.controllers;
 
-import com.greenfoxacademy.mysqlconnection.models.Assignee;
 import com.greenfoxacademy.mysqlconnection.models.Todo;
 import com.greenfoxacademy.mysqlconnection.services.AssigneeServiceImpl;
 import com.greenfoxacademy.mysqlconnection.services.TodoServiceImpl;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

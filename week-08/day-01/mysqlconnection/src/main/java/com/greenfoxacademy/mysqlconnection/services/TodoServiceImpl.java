@@ -79,25 +79,4 @@ public class TodoServiceImpl implements TodoService {
     todoRepository.save(todo);
   }
 
-  public void setNewTitle(Todo todo, String title) {
-    if (title != null) {
-      todo.setTitle(title);
-    }
-  }
-
-  public void setNewUrgent(Todo todo, Boolean urgent) {
-    if (urgent != null) {
-      todo.setUrgent(urgent);
-    } else {
-      todo.setUrgent(false);
-    }
-  }
-
-  public void setNewDone(Todo todo, Boolean done) {
-    if (done != null) {
-      todo.setDone(done);
-    } else {
-      todo.setDone(false);
-    }
-  }
 }

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>List of todos</h1>
+<h1><a href="/todo/">List of todos</a></h1>
 
 <form action="/todo/search" method="get">
     <label for="searchbar">Search for todos  by keyword in description</label>
@@ -25,7 +25,7 @@
         <th>Urgent</th>
         <th>Done</th>
         <th>Assignee</th>
-        <th>Date</th>
+        <th>Data</th>
     </tr>
     </thead>
 
@@ -35,7 +35,10 @@
         <td class="title" th:text="*{title}"></td>
         <td class="urgent" th:text="*{urgent}"></td>
         <td class="done" th:text="*{done}"></td>
-        <td class="assignee" th:text="*{assignee} == null ? 'No assignee yet' : *{assignee.name}"></td>
+        <td th:if="*{assignee == null}" th:text="|No assignee|"></td>
+        <td th:if="*{assignee != null}">
+            <a th:href="'/todo/assignee/' + *{assignee.id} + '/todos'" th:text="*{assignee.name}"></a></td>
+        <td class="date" th:text="*{date}"></td>
         <td class="date" th:text="*{date}"></td>
         <td>
             <a th:href="'/todo/' + *{id} + '/delete'">Delete</a>
