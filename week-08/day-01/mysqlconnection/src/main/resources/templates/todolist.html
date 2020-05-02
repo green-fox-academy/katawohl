@@ -44,31 +44,6 @@
 
 <button><a href="/todo/add">Add a todo to your list</a></button>
 
-<h2>List of assignees</h2>
-<table>
-
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Email address</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr th:each="assignee : ${assignees}" th:object="${assignee}">
-        <td class="name" th:text="*{name}"></td>
-        <td class="email" th:text="*{email}"></td>
-        <td>
-            <a th:href="'/todo/assignee/' + *{id} + '/delete'">Delete</a>
-        </td>
-        <td>
-            <a th:href="'/todo/assignee/' + *{id} + '/edit'">Edit</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
-
-<button><a href="/todo/assignee/add">Add an assignee</a></button>
-
+<button><a href="/todo/assignees">List of assignees</a></button>
 </body>
 </html>

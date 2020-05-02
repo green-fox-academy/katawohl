@@ -34,7 +34,7 @@ public class AssigneeController {
   @PostMapping("/add")
   public String addNewAssignee(@ModelAttribute Assignee assignee) {
     assigneeService.addAssignee(assignee);
-    return "redirect:/todo/list";
+    return "redirect:/todo/assignees";
   }
 
   @GetMapping("/{id}/delete")

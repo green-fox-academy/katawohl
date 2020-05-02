@@ -30,13 +30,6 @@ public class AssigneeServiceImpl implements AssigneeService {
     assigneeRepository.save(assignee);
   }
 
-   @Override
-  public Assignee findByName(String name) {
-    Assignee assignee = assigneeRepository.findByName(name);
-
-    return assignee;
-  }
-
   @Override
   public Assignee findById(long id) {
     Optional<Assignee> optionalAssignee = assigneeRepository.findById(id);

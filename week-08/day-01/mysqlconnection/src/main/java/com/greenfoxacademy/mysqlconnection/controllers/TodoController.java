@@ -32,13 +32,15 @@ public class TodoController {
   @GetMapping( {"/", "/list"})
   public String list(@RequestParam(value = "isDone", required = false) Boolean isDone,
                      Model model) {
-    List<Todo> todoList = todoService.listDoneTodos(isDone);
-    List<Assignee> assigneeList = assigneeService.returnAllAssignee();
-
-    model.addAttribute("assignees", assigneeList);
-    model.addAttribute("todos", todoList);
+    model.addAttribute("todos", todoService.listDoneTodos(isDone));
     model.addAttribute("todo", new Todo());
     return "todolist";
+  }
+
+  @GetMapping("/assignees")
+  public String showAddAssigneePage(Model model) {
+    model.addAttribute("assignees", assigneeService.returnAllAssignee());
+    return "listofass";
   }
 
   @GetMapping("/add")
@@ -63,7 +65,7 @@ public class TodoController {
   public String showEditPage(@PathVariable(name = "id") long id, Model model) {
     Todo todo = todoService.findById(id);
     model.addAttribute("todo", todo);
-    return "editpage";
+    return "edittodopage";
   }
 
   @PostMapping("/{id}/edit")
