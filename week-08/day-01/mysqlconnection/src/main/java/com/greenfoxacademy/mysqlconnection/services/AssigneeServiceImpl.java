@@ -49,16 +49,4 @@ public class AssigneeServiceImpl implements AssigneeService {
     Optional<Assignee> optionalAssignee = assigneeRepository.findById(id);
     optionalAssignee.ifPresent(assignee -> assigneeRepository.delete(assignee));
   }
-
-  public void setNewName(Assignee assignee, String name) {
-    if (name != null) {
-      assignee.setName(name);
-    }
-  }
-
-  public void setNewEmail(Assignee assignee, String email) {
-    if (email != null) {
-      assignee.setName(email);
-    }
-  }
 }

@@ -8,6 +8,5 @@ import org.springframework.stereotype.Service;
 public interface AssigneeService {
   List<Assignee> returnAllAssignee();
   void addAssignee(Assignee assignee);
-  Assignee findByName(String name);
   Assignee findById(long id);
 }

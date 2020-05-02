@@ -46,11 +46,6 @@ public class TodoServiceImpl implements TodoService {
   }
 
   @Override
-  public void delete(Todo todo) {
-    todoRepository.delete(todo);
-  }
-
-  @Override
   public Todo findById(long id) {
     Optional<Todo> optionalTodo = todoRepository.findById(id);
     Todo todo = optionalTodo.orElse(null);
