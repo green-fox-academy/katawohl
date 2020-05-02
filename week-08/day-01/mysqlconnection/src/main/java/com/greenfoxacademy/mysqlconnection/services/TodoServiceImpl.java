@@ -1,6 +1,8 @@
 package com.greenfoxacademy.mysqlconnection.services;
 
+import com.greenfoxacademy.mysqlconnection.models.Assignee;
 import com.greenfoxacademy.mysqlconnection.models.Todo;
+import com.greenfoxacademy.mysqlconnection.repository.AssigneeRepository;
 import com.greenfoxacademy.mysqlconnection.repository.TodoRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class TodoServiceImpl implements TodoService {
   private TodoRepository todoRepository;
+  private AssigneeRepository assigneeRepository;
 
   @Autowired
-  public TodoServiceImpl(TodoRepository todoRepository) {
+  public TodoServiceImpl(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
     this.todoRepository = todoRepository;
+    this.assigneeRepository = assigneeRepository;
   }
 
   public List<Todo> listDoneTodos(Boolean isDone) {
@@ -63,6 +67,16 @@ public class TodoServiceImpl implements TodoService {
   public void deleteById(long id) {
     Optional<Todo> todoToDelete = todoRepository.findById(id);
     todoToDelete.ifPresent(todo -> todoRepository.delete(todo));
+  }
+
+  @Override
+  public void addAssigneeToTodo(Assignee assignee, Todo todo) {
+    todo.setAssignee(assignee);
+    List<Todo> assigneeTodos = assignee.getTodoList();
+    assigneeTodos.add(todo);
+    assignee.setTodoList(assigneeTodos);
+    assigneeRepository.save(assignee);
+    todoRepository.save(todo);
   }
 
   public void setNewTitle(Todo todo, String title) {

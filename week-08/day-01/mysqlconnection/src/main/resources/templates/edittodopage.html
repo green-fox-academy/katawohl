@@ -20,10 +20,11 @@
     <label for="done">Done</label>
     <input type="checkbox" id="done" th:field="*{done}" th:value="*{done}">
 
-    <label for="assignee">Assignee</label>
-    <select name="food"  id="assignee" >
-        <option th:value="${assignee}" th:each="assignee:${assignees}" th:object="${assignee}">
-            <span th:text="*{id} + ', ' + *{name}"></span>
+    <label for="assigneeId">Assignee</label>
+    <select name="assigneeId"  id="assigneeId">
+        <option th:each="assignee:${assignees}"
+                th:text="${assignee.name}"
+                th:value="${assignee.id}">
         </option>
     </select>
 

@@ -33,7 +33,6 @@ public class TodoController {
   public String list(@RequestParam(value = "isDone", required = false) Boolean isDone,
                      Model model) {
     model.addAttribute("todos", todoService.listDoneTodos(isDone));
-    model.addAttribute("assignees", assigneeService.returnAllAssignee());
     model.addAttribute("todo", new Todo());
     return "todolist";
   }
@@ -64,18 +63,14 @@ public class TodoController {
 
   @GetMapping("/{id}/edit")
   public String showEditPage(@PathVariable(name = "id") long id, Model model) {
-    Todo todo = todoService.findById(id);
-    model.addAttribute("todo", todo);
+    model.addAttribute("todo", todoService.findById(id));
+    model.addAttribute("assignees", assigneeService.returnAllAssignee());
     return "edittodopage";
   }
 
   @PostMapping("/{id}/edit")
-  public String editTodo(@ModelAttribute Todo todo, String title, Boolean urgent, Boolean done) {
-    todoService.setNewTitle(todo, title);
-    todoService.setNewUrgent(todo, urgent);
-    todoService.setNewDone(todo, done);
-
-    todoService.addTodo(todo);
+  public String editTodo(@ModelAttribute Todo todo, long assigneeId) {
+    todoService.addAssigneeToTodo(assigneeService.findById(assigneeId), todo);
     return "redirect:/todo/list";
   }
 
@@ -83,13 +78,6 @@ public class TodoController {
   public String searchForTodo(@PathVariable(name = "searchTitle") String title, Model model){
     model.addAttribute("todos", todoService.findByTitle(title));
     return "searchresults";
-  }
-
-  @GetMapping("/{id}/assign")
-  public String showAssignPage(@PathVariable(name = "id") long id, Model model){
-    model.addAttribute("todo", todoService.findById(id));
-
-    return "assign";
   }
 
 }
