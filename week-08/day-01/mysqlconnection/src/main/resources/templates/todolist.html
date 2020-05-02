@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo List</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
 
@@ -33,7 +35,7 @@
         <td class="title" th:text="*{title}"></td>
         <td class="urgent" th:text="*{urgent}"></td>
         <td class="done" th:text="*{done}"></td>
-        <td class="assignee" th:text="*{assignee}"></td>
+        <td class="assignee" th:text="*{assignee.name}"></td>
         <td class="date" th:text="*{date}"></td>
         <td>
             <a th:href="'/todo/' + *{id} + '/delete'">Delete</a>
@@ -41,7 +43,6 @@
         <td>
             <a th:href="'/todo/' + *{id} + '/edit'">Edit</a>
         </td>
-        <td>  <a th:href="'/todo/' + *{id} + '/assign'">Assign task to someone</a></td>
     </tr>
     </tbody>
 

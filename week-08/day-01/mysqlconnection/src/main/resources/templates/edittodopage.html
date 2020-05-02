@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit todo</title>
+    <link rel="stylesheet" th:href="@{/style.css}" />
 </head>
 <body>
 
@@ -20,7 +21,11 @@
     <input type="checkbox" id="done" th:field="*{done}" th:value="*{done}">
 
     <label for="assignee">Assignee</label>
-    <input type="checkbox" id="assignee" th:field="*{assignee}" th:value="*{assignee}">
+    <select name="food"  id="assignee" >
+        <option th:value="${assignee}" th:each="assignee:${assignees}" th:object="${assignee}">
+            <span th:text="*{id} + ', ' + *{name}"></span>
+        </option>
+    </select>
 
     <button type="submit">Submit</button>
 </form>
