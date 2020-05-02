@@ -25,7 +25,8 @@
         <th>Urgent</th>
         <th>Done</th>
         <th>Assignee</th>
-        <th>Data</th>
+        <th>Date of Creation</th>
+        <th>Due date</th>
     </tr>
     </thead>
 
@@ -38,8 +39,8 @@
         <td th:if="*{assignee == null}" th:text="|No assignee|"></td>
         <td th:if="*{assignee != null}">
             <a th:href="'/todo/assignee/' + *{assignee.id} + '/todos'" th:text="*{assignee.name}"></a></td>
-        <td class="date" th:text="*{date}"></td>
-        <td class="date" th:text="*{date}"></td>
+        <td class="date" th:text="*{creationDate}"></td>
+        <td class="date" th:text="*{creationDate}"></td>
         <td>
             <a th:href="'/todo/' + *{id} + '/delete'">Delete</a>
         </td>

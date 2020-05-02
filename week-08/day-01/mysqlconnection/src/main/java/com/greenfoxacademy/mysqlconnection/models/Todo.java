@@ -23,7 +23,7 @@ public class Todo {
   private Boolean isUrgent = false;
   private Boolean isDone = false;
   @Temporal(TemporalType.DATE)
-  private Date date;
+  private Date creationDate;
 
   @ManyToOne(fetch = FetchType.EAGER)
   @JoinColumn
@@ -33,11 +33,11 @@ public class Todo {
     this.title = title;
     this.isUrgent = isUrgent;
     this.isDone = isDone;
-    this.date = new Date();
+    this.creationDate = new Date();
   }
 
   public Todo() {
-    this.date = new Date();
+    this.creationDate = new Date();
   }
 
   public long getId() {
@@ -72,8 +72,8 @@ public class Todo {
     isDone = done;
   }
 
-  public Date getDate() {
-    return date;
+  public Date getCreationDate() {
+    return creationDate;
   }
 
   public Assignee getAssignee() {
@@ -83,4 +83,5 @@ public class Todo {
   public void setAssignee(Assignee assignee) {
     this.assignee = assignee;
   }
+
 }
