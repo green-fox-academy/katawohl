@@ -7,7 +7,7 @@
 <body>
 <h1>Add a new assignee</h1>
 
-<form action="/assignee/add" method="post" th:object="${assignee}">
+<form action="/todo/assignee/add" method="post" th:object="${assignee}">
     <label for="newAssigneeName">Name</label>
     <input id="newAssigneeName" type="text" th:field="*{name}" required><br>
 

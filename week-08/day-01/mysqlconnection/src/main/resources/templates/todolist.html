@@ -58,11 +58,17 @@
     <tr th:each="assignee : ${assignees}" th:object="${assignee}">
         <td class="name" th:text="*{name}"></td>
         <td class="email" th:text="*{email}"></td>
+        <td>
+            <a th:href="'/todo/assignee/' + *{id} + '/delete'">Delete</a>
+        </td>
+        <td>
+            <a th:href="'/todo/assignee/' + *{id} + '/edit'">Edit</a>
+        </td>
     </tr>
     </tbody>
 </table>
 
-<button><a href="/assignee/add">Add an assignee</a></button>
+<button><a href="/todo/assignee/add">Add an assignee</a></button>
 
 </body>
 </html>

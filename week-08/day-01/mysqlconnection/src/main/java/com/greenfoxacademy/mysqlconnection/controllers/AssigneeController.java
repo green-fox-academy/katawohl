@@ -9,11 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/assignee")
+@RequestMapping("/todo/assignee")
 public class AssigneeController {
   private final TodoServiceImpl todoService;
   private final AssigneeServiceImpl assigneeService;
@@ -32,6 +33,25 @@ public class AssigneeController {
 
   @PostMapping("/add")
   public String addNewAssignee(@ModelAttribute Assignee assignee) {
+    assigneeService.addAssignee(assignee);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping("/{id}/delete")
+  public String deleteTodo(@PathVariable(name = "id") Long id,
+                           @ModelAttribute Assignee assignee) {
+    assigneeService.deleteById(id);
+    return "redirect:/todo/list";
+  }
+
+  @GetMapping("/{id}/edit")
+  public String showEditPage(@PathVariable(name = "id") long id, Model model) {
+    model.addAttribute("assignee", assigneeService.findById(id));
+    return "editassignee";
+  }
+
+  @PostMapping("/{id}/edit")
+  public String editTodo(@ModelAttribute Assignee assignee) {
     assigneeService.addAssignee(assignee);
     return "redirect:/todo/list";
   }

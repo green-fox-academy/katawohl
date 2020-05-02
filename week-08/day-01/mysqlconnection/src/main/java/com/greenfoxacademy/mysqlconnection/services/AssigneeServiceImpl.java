@@ -1,6 +1,7 @@
 package com.greenfoxacademy.mysqlconnection.services;
 
 import com.greenfoxacademy.mysqlconnection.models.Assignee;
+import com.greenfoxacademy.mysqlconnection.models.Todo;
 import com.greenfoxacademy.mysqlconnection.repository.AssigneeRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +30,35 @@ public class AssigneeServiceImpl implements AssigneeService {
     assigneeRepository.save(assignee);
   }
 
-  @Override
+   @Override
   public Assignee findByName(String name) {
-    Optional<Assignee> optionalAssignee = assigneeRepository.findById(name);
+    Assignee assignee = assigneeRepository.findByName(name);
+
+    return assignee;
+  }
+
+  @Override
+  public Assignee findById(long id) {
+    Optional<Assignee> optionalAssignee = assigneeRepository.findById(id);
 
     Assignee assignee = optionalAssignee.orElse(null);
     return assignee;
+  }
+
+  public void deleteById(long id) {
+    Optional<Assignee> optionalAssignee = assigneeRepository.findById(id);
+    optionalAssignee.ifPresent(assignee -> assigneeRepository.delete(assignee));
+  }
+
+  public void setNewName(Assignee assignee, String name) {
+    if (name != null) {
+      assignee.setName(name);
+    }
+  }
+
+  public void setNewEmail(Assignee assignee, String email) {
+    if (email != null) {
+      assignee.setName(email);
+    }
   }
 }
