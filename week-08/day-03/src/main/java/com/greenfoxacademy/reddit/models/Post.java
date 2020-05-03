@@ -1,5 +1,6 @@
 package com.greenfoxacademy.reddit.models;
 
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,9 +15,11 @@ public class Post {
   private int likes;
   private String title;
   private String url;
+  private Date date;
 
   public Post(){
     this.likes = 0;
+    this.date = new Date();
   }
 
   public long getId() {
@@ -49,5 +52,13 @@ public class Post {
 
   public void setUrl(String url) {
     this.url = url;
+  }
+
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
   }
 }
