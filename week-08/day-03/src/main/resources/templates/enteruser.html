@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Submit a New Posts</title>
+    <title>Enter new user</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
@@ -29,27 +29,18 @@
             margin-right: 25pt;
         }
 
-        .cancel-button {
-            margin-top: 25pt;
-        }
     </style>
 </head>
 <body>
 
-<h1>Submit a New Post by <span th:text="${user.userName}"></span></h1>
+<h1>Enter new user</h1>
 
-<form th:action="'/add/' + ${user.id}" method="post" th:object="${newPost}">
-    <label for="title">Title: </label>
-    <input type="text" id="title" name="title" th:value="*{title}">
+<form action="/enter" method="post">
+    <label for="userName">Name: </label>
+    <input type="text" id="userName" name="userName">
 
-    <label for="url">Url: </label>
-    <input type="url" id="url" name="url" th:value="*{url}">
-
-    <button type="submit">Submit</button>
+    <button type="submit">Enter user</button>
 </form>
-
-<button class="cancel-button"><a href="/">Cancel</a></button>
-
 
 
 </body>
