@@ -4,6 +4,7 @@ import com.greenfoxacademy.reddit.models.Post;
 import com.greenfoxacademy.reddit.repositories.PostRepository;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,11 +32,23 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public Post findById(long id) {
-    return null;
+    Optional<Post> optionalPost = postRepository.findById(id);
+    Post post = optionalPost.orElse(null);
+    return post;
   }
 
   @Override
-  public void votePost() {
+  public void votePost(long id, boolean ifLiked) {
+    Post post = this.findById(id);
+    int likes = post.getLikes();
 
+    if (ifLiked){
+      likes++;
+    } else {
+      likes--;
+    }
+    post.setLikes(likes);
+
+    this.addPost(post);
   }
 }

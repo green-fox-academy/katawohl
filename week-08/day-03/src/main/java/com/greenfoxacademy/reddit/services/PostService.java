@@ -7,5 +7,5 @@ public interface PostService {
   void addPost(Post post);
   List<Post> getPosts();
   Post findById(long id);
-  void votePost();
+  void votePost(long id, boolean ifLiked);
 }
