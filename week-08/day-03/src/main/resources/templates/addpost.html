@@ -4,7 +4,35 @@
     <meta charset="UTF-8">
     <title>Submit a New Posts</title>
 
-    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 25pt;
+        }
+
+        button{
+            font-size: 22px;
+            border-radius: 4px;
+        }
+
+        form {
+            margin-top: 25pt;
+        }
+
+        label {
+            margin-right: 15pt;
+            font-size: 16pt;
+            font-weight: bold;
+        }
+
+        input {
+            margin-right: 25pt;
+        }
+
+        .cancel-button {
+            margin-top: 25pt;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +48,7 @@
     <button type="submit">Submit</button>
 </form>
 
-<button><a href="/">Cancel</a></button>
+<button class="cancel-button"><a href="/">Cancel</a></button>
 
 </body>
 </html>
