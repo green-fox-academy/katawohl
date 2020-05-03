@@ -24,10 +24,7 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public List<Post> getPosts() {
-    List<Post> posts = new ArrayList<>();
-    postRepository.findAll().forEach(posts::add);
-
-    return posts;
+    return postRepository.getAllByOrderByLikesDesc();
   }
 
   @Override
