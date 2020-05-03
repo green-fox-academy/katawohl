@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trending Posts</title>
+
+    <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body>
+
+<button><a href="/add">Submit a new post</a></button>
+
+<h1>Trending posts</h1>
+
+<table>
+    <tbody>
+    <tr th:each="post:${posts}" th:object="${post}">
+        <td th:text="*{likes}"></td>
+        <td></td>
+        <td></td>
+        <td><a th:href="*{url}" th:text="*{title}" target="_blank"></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
