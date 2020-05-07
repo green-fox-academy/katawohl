@@ -42,8 +42,7 @@ public class TodoController {
   }
 
   @GetMapping("/add")
-  public String showAddPage(Model model) {
-    model.addAttribute("todo", new Todo());
+  public String showAddPage() {
     return "addtodopage";
   }
 
