@@ -26,8 +26,7 @@ public class AssigneeController {
   }
 
   @GetMapping("/add")
-  public String showAddAssigneePage(Model model) {
-    model.addAttribute("assignee", new Assignee());
+  public String showAddAssigneePage() {
     return "addassignee";
   }
 

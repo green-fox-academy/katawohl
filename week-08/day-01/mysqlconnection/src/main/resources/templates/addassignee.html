@@ -8,12 +8,12 @@
 <body>
 <h1>Add a new assignee</h1>
 
-<form action="/todo/assignee/add" method="post" th:object="${assignee}">
+<form action="/todo/assignee/add" method="post">
     <label for="newAssigneeName">Name</label>
-    <input id="newAssigneeName" type="text" th:field="*{name}" required><br>
+    <input id="newAssigneeName" type="text" name="name" required><br>
 
     <label for="newAssigneeEmail">Email</label>
-    <input id="newAssigneeEmail" type="email" th:field="*{email}" required><br>
+    <input id="newAssigneeEmail" type="email" name="email" required><br>
 
     <button type="submit">Submit</button>
 </form>
