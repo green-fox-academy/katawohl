@@ -60,7 +60,9 @@ public class TodoController {
 
   @GetMapping("/{id}/edit")
   public String showEditPage(@PathVariable(name = "id") long id, Model model) {
-    model.addAttribute("todo", todoService.findById(id));
+    Todo todo =todoService.findById(id);
+    model.addAttribute("found", todo != null);
+    model.addAttribute("todo", todo);
     model.addAttribute("assignees", assigneeService.returnAllAssignee());
     return "edittodopage";
   }
@@ -71,8 +73,8 @@ public class TodoController {
     return "redirect:/todo/list";
   }
 
-  @GetMapping("/search{searchTitle}")
-  public String searchForTodo(@PathVariable(name = "searchTitle") String title, Model model){
+  @GetMapping("/search")
+  public String searchForTodo(@RequestParam(name = "searchTitle") String title, Model model){
     model.addAttribute("todos", todoService.findByTitle(title));
     return "searchresults";
   }
