@@ -3,33 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit todo</title>
-    <link rel="stylesheet" th:href="@{/style.css}" />
+    <link rel="stylesheet" th:href="@{/style.css}"/>
 </head>
 <body>
 
 <h1>Edit your todo</h1>
 
-<form th:action="'/todo/' + *{id} + '/edit'" method="post" th:object="${todo}">
+<div th:if="${found}">
+    <form th:action="'/todo/' + *{id} + '/edit'" method="post" th:object="${todo}">
 
-    <label for="editTodo">Todo description</label>
-    <input type="text" id="editTodo" th:field="*{title}" required>
+        <label for="editTodo">Todo description</label>
+        <input type="text" id="editTodo" th:field="*{title}" required>
 
-    <label for="urgent">Urgent</label>
-    <input type="checkbox" id="urgent"  th:field="*{urgent}" th:value="*{urgent}">
+        <label for="urgent">Urgent</label>
+        <input type="checkbox" id="urgent" th:field="*{urgent}" th:value="*{urgent}">
 
-    <label for="done">Done</label>
-    <input type="checkbox" id="done" th:field="*{done}" th:value="*{done}">
+        <label for="done">Done</label>
+        <input type="checkbox" id="done" th:field="*{done}" th:value="*{done}">
 
-    <label for="assigneeId">Assignee</label>
-    <select name="assigneeId"  id="assigneeId">
-        <option th:each="assignee:${assignees}"
-                th:text="${assignee.name}"
-                th:value="${assignee.id}">
-        </option>
-    </select>
+        <label for="assigneeId">Assignee</label>
+        <select name="assigneeId" id="assigneeId">
+            <option th:each="assignee:${assignees}"
+                    th:text="${assignee.name}"
+                    th:value="${assignee.id}">
+            </option>
+        </select>
 
-    <button type="submit">Submit</button>
-</form>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div th:unless="${found}">
+    <p>Sorry, todo not found.</p>
+</div>
 
 <button><a href="/todo/list">Cancel</a></button>
 
