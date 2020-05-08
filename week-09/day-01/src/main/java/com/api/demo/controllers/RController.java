@@ -1,15 +1,11 @@
 package com.api.demo.controllers;
 
-import com.api.demo.models.Appended;
-import com.api.demo.models.Doubling;
-import com.api.demo.models.ErrorMessage;
-import com.api.demo.models.Greeter;
+import com.api.demo.models.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.swing.*;
 
 @RestController
 public class RController {
@@ -47,4 +43,16 @@ public class RController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @PostMapping("/dountil/{action}")
+    public ResponseEntity<?> doUntil(@RequestBody DoUntil doUntil, @PathVariable(name = "action") String action) {
+        DoUntilAction doUntilAction = new DoUntilAction();
+        if (doUntil != null) {
+            doUntilAction.doUntilAction(doUntil.getUntil(), action);
+            return ResponseEntity.ok().body(doUntilAction);
+        } else {
+            return new ResponseEntity(new ErrorMessage("Please provide a number!"), HttpStatus.OK);
+        }
+    }
+
 }
