@@ -1,14 +1,21 @@
 package com.api.demo.controllers;
 
 import com.api.demo.models.*;
+import com.api.demo.models.arrayhandler.*;
+//import com.api.demo.services.ArrayHandlerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.*;
-
 @RestController
 public class RController {
+   /* private ArrayHandlerService arrayHandlerService;
+
+    @Autowired
+    public RController(ArrayHandlerService arrayHandlerService){
+        this.arrayHandlerService = arrayHandlerService;
+    }*/
 
     @GetMapping("/doubling")
     public ResponseEntity<?> giveDouble(@RequestParam(required = false) Integer input) {
@@ -53,6 +60,18 @@ public class RController {
         } else {
             return new ResponseEntity(new ErrorMessage("Please provide a number!"), HttpStatus.OK);
         }
+    }
+
+    @PostMapping("/arrays")
+    public ResponseEntity<?> handleArray(@RequestBody ArrayHandler arrayHandler){
+        if (arrayHandler.getWhat().equals("sum")){
+            return ResponseEntity.ok().body(new ArrayHandlerResultSum(arrayHandler));
+        } if (arrayHandler.getWhat().equals("multiply")){
+            return ResponseEntity.ok().body(new ArrayHandlerResultFactor(arrayHandler));
+        } else {
+            return ResponseEntity.ok().body(new ArrayHandlerResultDoubling(arrayHandler));
+        }
+       // return ResponseEntity.ok().body(arrayHandlerService.calculate(arrayHandler));
     }
 
 }
