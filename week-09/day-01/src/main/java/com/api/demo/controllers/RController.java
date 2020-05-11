@@ -1,8 +1,8 @@
 package com.api.demo.controllers;
 
 import com.api.demo.models.*;
-import com.api.demo.models.arrayhandler.*;
 //import com.api.demo.services.ArrayHandlerService;
+import com.api.demo.services.ArrayHandlerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RController {
-   /* private ArrayHandlerService arrayHandlerService;
+    private ArrayHandlerService arrayHandlerService;
 
     @Autowired
-    public RController(ArrayHandlerService arrayHandlerService){
+    public RController(ArrayHandlerService arrayHandlerService) {
         this.arrayHandlerService = arrayHandlerService;
-    }*/
+    }
 
     @GetMapping("/doubling")
     public ResponseEntity<?> giveDouble(@RequestParam(required = false) Integer input) {
@@ -27,7 +27,7 @@ public class RController {
     }
 
     @GetMapping("/greeter")
-    public ResponseEntity<?> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
+    public ResponseEntity<Object> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
         if (name == null && title == null) {
             return new ResponseEntity(new ErrorMessage("Please provide a name and a title!"), HttpStatus.BAD_REQUEST);
         }
@@ -63,15 +63,14 @@ public class RController {
     }
 
     @PostMapping("/arrays")
-    public ResponseEntity<?> handleArray(@RequestBody ArrayHandler arrayHandler){
-        if (arrayHandler.getWhat().equals("sum")){
-            return ResponseEntity.ok().body(new ArrayHandlerResultSum(arrayHandler));
-        } if (arrayHandler.getWhat().equals("multiply")){
-            return ResponseEntity.ok().body(new ArrayHandlerResultFactor(arrayHandler));
+    public ResponseEntity<?> handleArray(@RequestBody ArrayHandler arrayHandler) {
+        if (arrayHandler.getWhat().equals("sum")) {
+            return ResponseEntity.ok().body(arrayHandlerService.calculateSum(arrayHandler));
+        } else if (arrayHandler.getWhat().equals("multiply")) {
+            return ResponseEntity.ok().body(arrayHandlerService.calculateFactor(arrayHandler));
         } else {
-            return ResponseEntity.ok().body(new ArrayHandlerResultDoubling(arrayHandler));
+            return ResponseEntity.ok().body(arrayHandlerService.calculateDouble(arrayHandler));
         }
-       // return ResponseEntity.ok().body(arrayHandlerService.calculate(arrayHandler));
     }
 
 }

@@ -1,4 +1,4 @@
-package com.api.demo.models.arrayhandler;
+package com.api.demo.models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,6 @@ import java.util.List;
 public class ArrayHandler {
     private String what;
     private List<Integer> numbers = new ArrayList();
-
-    public ArrayHandler(){}
-
-    /*public ArrayHandler(String what, List<Integer> numbers) {
-        this.what = what;
-        this.numbers = numbers;
-    }*/
 
     public String getWhat() {
         return what;
