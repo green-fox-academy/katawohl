@@ -33,6 +33,7 @@ public class RController {
 
     @GetMapping("/greeter")
     public ResponseEntity<?> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
+        logService.addLog(new Log("/greeter", "name=" + name + "&title=" + title));
         if (name == null && title == null) {
             return new ResponseEntity(new ErrorMessage("Please provide a name and a title!"), HttpStatus.BAD_REQUEST);
         }
@@ -48,6 +49,7 @@ public class RController {
 
     @GetMapping("/appenda/{appendable}")
     public ResponseEntity<?> appenda(@PathVariable(name = "appendable") String appendable) {
+        logService.addLog(new Log("/appenda/" + appendable, appendable));
         if (appendable != null) {
             Appended appended = new Appended(appendable);
             return ResponseEntity.ok().body(appended);
@@ -58,6 +60,7 @@ public class RController {
 
     @PostMapping("/dountil/{action}")
     public ResponseEntity<?> doUntil(@RequestBody DoUntil doUntil, @PathVariable(name = "action") String action) {
+        logService.addLog(new Log("/dountil/" + action, action));
         DoUntilAction doUntilAction = new DoUntilAction();
         if (doUntil != null) {
             doUntilAction.doUntilAction(doUntil.getUntil(), action);
@@ -69,6 +72,7 @@ public class RController {
 
     @PostMapping("/arrays")
     public ResponseEntity<?> handleArray(@RequestBody ArrayHandler arrayHandler) {
+        logService.addLog(new Log("arrays", "what="+arrayHandler.getWhat() + ", numbers=" +arrayHandler.getNumbers()));
         if (arrayHandler.getWhat().equals("sum")) {
             return ResponseEntity.ok().body(arrayHandlerService.calculateSum(arrayHandler));
         } else if (arrayHandler.getWhat().equals("multiply")) {
@@ -76,6 +80,11 @@ public class RController {
         } else {
             return ResponseEntity.ok().body(arrayHandlerService.calculateDouble(arrayHandler));
         }
+    }
+
+    @GetMapping("/log")
+    public ResponseEntity<LogCount> displayAllLogs() {
+        return ResponseEntity.ok().body(logService.doLogCount());
     }
 
 }
