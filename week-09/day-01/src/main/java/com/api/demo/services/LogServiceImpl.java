@@ -1,7 +1,7 @@
 package com.api.demo.services;
 
-import com.api.demo.models.Log;
-import com.api.demo.models.LogCount;
+import com.api.demo.models.logs.Log;
+import com.api.demo.models.logs.LogCount;
 import com.api.demo.repositories.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

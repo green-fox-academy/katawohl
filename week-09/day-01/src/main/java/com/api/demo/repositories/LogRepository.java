@@ -1,6 +1,6 @@
 package com.api.demo.repositories;
 
-import com.api.demo.models.Log;
+import com.api.demo.models.logs.Log;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

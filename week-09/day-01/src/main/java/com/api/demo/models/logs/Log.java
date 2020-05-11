@@ -1,4 +1,4 @@
-package com.api.demo.models;
+package com.api.demo.models.logs;
 
 import javax.persistence.*;
 import java.util.Date;

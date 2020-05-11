@@ -1,5 +1,6 @@
-package com.api.demo.models;
+package com.api.demo.models.logs;
 
+import com.api.demo.models.logs.Log;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;

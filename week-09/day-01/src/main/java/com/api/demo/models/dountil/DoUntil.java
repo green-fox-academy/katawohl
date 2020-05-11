@@ -1,4 +1,4 @@
-package com.api.demo.models;
+package com.api.demo.models.dountil;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
