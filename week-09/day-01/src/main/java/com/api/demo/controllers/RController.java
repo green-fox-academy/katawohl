@@ -3,6 +3,8 @@ package com.api.demo.controllers;
 import com.api.demo.models.*;
 //import com.api.demo.services.ArrayHandlerService;
 import com.api.demo.services.ArrayHandlerService;
+import com.api.demo.services.LogService;
+import com.api.demo.services.LogServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +12,18 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class RController {
-    private ArrayHandlerService arrayHandlerService;
+    private final ArrayHandlerService arrayHandlerService;
+    private final LogService logService;
 
     @Autowired
-    public RController(ArrayHandlerService arrayHandlerService) {
+    public RController(ArrayHandlerService arrayHandlerService, LogServiceImpl logService) {
         this.arrayHandlerService = arrayHandlerService;
+        this.logService = logService;
     }
 
     @GetMapping("/doubling")
     public ResponseEntity<?> giveDouble(@RequestParam(required = false) Integer input) {
+        logService.addLog(new Log("/doubling", "input=" + input));
         if (input == null) {
             return new ResponseEntity(new ErrorMessage("Please provide an input!"), HttpStatus.OK);
         } else {
@@ -27,7 +32,7 @@ public class RController {
     }
 
     @GetMapping("/greeter")
-    public ResponseEntity<Object> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
+    public ResponseEntity<?> greet(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
         if (name == null && title == null) {
             return new ResponseEntity(new ErrorMessage("Please provide a name and a title!"), HttpStatus.BAD_REQUEST);
         }
