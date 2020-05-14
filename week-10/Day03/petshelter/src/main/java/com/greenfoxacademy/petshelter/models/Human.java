@@ -20,6 +20,14 @@ public class Human {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "human", fetch = FetchType.EAGER)
   private List<Pet> petlist;
 
+  public Human() {
+  }
+
+  public Human(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
   public long getId() {
     return id;
   }
@@ -44,11 +52,11 @@ public class Human {
     this.age = age;
   }
 
-  public Human(String name, int age) {
-    this.name = name;
-    this.age = age;
+  public List<Pet> getPetlist() {
+    return petlist;
   }
 
-  public Human() {
+  public void setPetlist(List<Pet> petlist) {
+    this.petlist = petlist;
   }
 }

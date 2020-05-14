@@ -2,6 +2,9 @@ package com.greenfoxacademy.petshelter.controllers;
 
 import com.greenfoxacademy.petshelter.models.Human;
 import com.greenfoxacademy.petshelter.services.HumanService;
+import com.greenfoxacademy.petshelter.services.HumanServiceImpl;
+import com.greenfoxacademy.petshelter.services.PetService;
+import com.greenfoxacademy.petshelter.services.PetServiceImpl;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,10 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class HumanController {
 
     private HumanService humanService;
+    private PetService petService;
 
     @Autowired
-    public HumanController(HumanService humanService) {
+    public HumanController(HumanServiceImpl humanService, PetServiceImpl petService) {
         this.humanService = humanService;
+        this.petService = petService;
     }
 
     @GetMapping("/list-humans")
