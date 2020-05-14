@@ -6,6 +6,7 @@ import com.greenfoxacademy.petshelter.repositories.HumanRepository;
 import java.util.List;
 import java.util.Optional;
 
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -31,9 +32,14 @@ public class HumanServiceImpl implements HumanService {
     }
 
     @Override
-    public void deleteHumanById(Long id) {
-        Human human = humanRepository.findById(id).orElse(null);
-        humanRepository.delete(human);
+    public void deleteHumanById(Long id) throws NotFoundException {
+        Optional<Human> humanOptional = humanRepository.findById(id);
+        if (humanOptional.isPresent()){
+            humanRepository.delete(humanOptional.get());
+        } else {
+            throw new NotFoundException("Human by the given ID does not exist");
+        }
+
     }
 
     @Override

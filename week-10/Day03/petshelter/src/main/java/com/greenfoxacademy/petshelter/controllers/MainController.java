@@ -2,6 +2,7 @@ package com.greenfoxacademy.petshelter.controllers;
 
 import com.greenfoxacademy.petshelter.models.Human;
 import com.greenfoxacademy.petshelter.services.HumanService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +25,8 @@ public class MainController {
     }
 
     @GetMapping("/add-human")
-    public String renderHumanEditPage() { ;
+    public String renderHumanEditPage() {
+        ;
         return "edithuman";
     }
 
@@ -45,13 +47,13 @@ public class MainController {
     }
 
     @PostMapping("/edit/{id}")
-    public String editHuman(@ModelAttribute Human human){
+    public String editHuman(@ModelAttribute Human human) {
         humanService.addHuman(human);
         return "redirect:/list-humans";
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteHuman(@PathVariable(name = "id") Long id) {
+    public String deleteHuman(@PathVariable(name = "id") Long id) throws NotFoundException {
         humanService.deleteHumanById(id);
         return "redirect:/list-humans";
     }
