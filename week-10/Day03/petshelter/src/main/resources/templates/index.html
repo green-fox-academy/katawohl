@@ -23,6 +23,7 @@
     <td class="name" th:text="${human.getName()}"></td>
     <td class="age" th:text="${human.getAge()}"></td>
     <td><button><a th:href="@{|/delete/${human.getId()}|}">Delete</a></button></td>
+    <td><button><a th:href="@{|/edit/${human.getId()}|}">Edit</a></button></td>
   </tr>
   </tbody>
 

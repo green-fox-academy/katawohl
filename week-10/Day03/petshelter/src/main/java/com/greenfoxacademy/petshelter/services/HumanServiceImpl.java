@@ -33,7 +33,12 @@ public class HumanServiceImpl implements HumanService {
     @Override
     public void deleteHumanById(Long id) {
         Human human = humanRepository.findById(id).orElse(null);
-
         humanRepository.delete(human);
+    }
+
+    @Override
+    public Human findById(Long id) {
+        Human human = humanRepository.findById(id).orElse(null);
+        return human;
     }
 }

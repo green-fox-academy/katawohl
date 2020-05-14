@@ -11,4 +11,6 @@ public interface HumanService {
     void addHuman(Human human);
 
     void deleteHumanById(Long id);
+
+    Human findById(Long id);
 }
