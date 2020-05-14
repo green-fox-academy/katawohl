@@ -1,5 +1,7 @@
 package com.greenfoxacademy.petshelter.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +14,8 @@ public class Human {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
   private String name;
+
+  @JsonIgnore
   private int age;
 
   public long getId() {
