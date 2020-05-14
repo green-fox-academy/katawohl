@@ -2,7 +2,7 @@
 <html lang="en" html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Pet Shelter</title>
 </head>
 <body>
 
@@ -13,6 +13,7 @@
     <th>Id</th>
     <th>Name</th>
     <th>Age</th>
+    <th>Delete</th>
   </tr>
   </thead>
 
@@ -21,10 +22,13 @@
     <td class="id" th:text="${human.getId()}"></td>
     <td class="name" th:text="${human.getName()}"></td>
     <td class="age" th:text="${human.getAge()}"></td>
+    <td><button><a th:href="@{|/delete/${human.getId()}|}">Delete</a></button></td>
   </tr>
   </tbody>
 
 </table>
+
+<button><a href="/add-human">Add human</a></button><br>
 
 </body>
 </html>
