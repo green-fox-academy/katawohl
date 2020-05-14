@@ -9,12 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class MainController {
+public class HumanController {
 
     private HumanService humanService;
 
     @Autowired
-    public MainController(HumanService humanService) {
+    public HumanController(HumanService humanService) {
         this.humanService = humanService;
     }
 
