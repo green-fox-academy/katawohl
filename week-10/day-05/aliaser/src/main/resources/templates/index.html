@@ -5,18 +5,60 @@
     <title>Aliaser</title>
 </head>
 <body>
+<div th:if="${found}">
 
-<form action="/api/links" method="post">
+    <div th:if="${secretCode}">
 
-    <label for="url">URL</label>
-    <input type="url" name="url" id="url"><br>
+        <p>Your URL is aliased to <span th:text="${link.getAlias()}"></span> and your secret code is <span
+                th:text="${link.getSecretCode()}"></span>.</p>
 
-    <label for="alias">Alias</label>
-    <input type="text" name="alias" id="alias"><br>
+        <form action="/api/links" method="post">
 
-    <button type="submit">Submit</button>
+            <label for="urlNew">URL</label>
+            <input type="url" name="url" id="urlNew"><br>
 
-</form>
+            <label for="aliasNew">Alias</label>
+            <input type="text" name="alias" id="aliasNew"><br>
+
+            <button type="submit"><a href="/">Submit</a></button>
+
+        </form>
+    </div>
+
+    <div th:unless="${secretCode}">
+
+        <p style="color: red">Your alias is already in use!</p>
+
+        <form action="/api/links" method="post">
+
+            <label for="urlRenew">URL</label>
+            <input type="url" name="url" id="urlReNew" th:text="${link.getUrl()}"><br>
+
+            <label for="aliasReNew">Alias</label>
+            <input type="text" name="alias" id="aliasReNew" th:text="${link.getAlias()}"><br>
+
+            <button type="submit"><a href="/">Submit</a></button>
+
+        </form>
+
+    </div>
+</div>
+
+<div th:unless="${found}">
+
+    <form action="/api/links" method="post">
+
+        <label for="url">URL</label>
+        <input type="url" name="url" id="url" required><br>
+
+        <label for="alias">Alias</label>
+        <input type="text" name="alias" id="alias" required><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</div>
 
 </body>
 </html>

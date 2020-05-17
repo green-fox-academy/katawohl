@@ -59,4 +59,8 @@ public class Link {
     public void setSecretCode(String secretCode) {
         this.secretCode = secretCode;
     }
+
+    public void incrementHitCount() {
+        this.setHitCount(this.hitCount + 1);
+    }
 }

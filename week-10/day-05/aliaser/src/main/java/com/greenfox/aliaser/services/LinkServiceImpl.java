@@ -5,6 +5,7 @@ import com.greenfox.aliaser.repositories.LinkRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -42,5 +43,29 @@ public class LinkServiceImpl implements LinkService {
         return link;
     }
 
+    public void incrementLinkHitCount(Link link) {
+        link.incrementHitCount();
+        linkRepository.save(link);
+    }
+
+    @Override
+    public List<Link> listAllLInks() {
+        return linkRepository.findAll();
+    }
+
+    @Override
+    public Link findBySecretCode(String secretCode) {
+        return linkRepository.findBySecretCode(secretCode).orElse(null);
+    }
+
+    @Override
+    public void deleteLink(Link link) {
+        linkRepository.delete(link);
+    }
+
+    @Override
+    public Link findById(long id) {
+        return linkRepository.findById(id).orElse(null);
+    }
 
 }
