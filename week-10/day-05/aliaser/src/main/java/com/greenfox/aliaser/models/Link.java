@@ -14,6 +14,8 @@ public class Link {
     private String url;
     private String alias;
     private int hitCount;
+
+    //@JsonIgnore //--but then it is ignored whenever i request an object in json format..!
     private String secretCode;
 
     public Link() {

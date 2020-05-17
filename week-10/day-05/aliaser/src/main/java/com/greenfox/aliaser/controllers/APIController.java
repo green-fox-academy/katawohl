@@ -18,6 +18,7 @@ public class APIController {
         this.linkService = linkService;
     }
 
+    //probably missed that this endpoint is not a restEndpoint. Is there a way to pass on data from rest endpoint to reg controller?
     @PostMapping("/api/links")
     public ResponseEntity<?> submitLink(@ModelAttribute Link link) {
         if (linkService.findByAlias(link.getAlias()) != null) {
