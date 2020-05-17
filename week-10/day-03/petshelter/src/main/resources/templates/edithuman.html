@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add a human</title>
+</head>
+<body>
+
+<h1>Add or edit a human</h1>
+
+<div th:if="${id}">
+
+<div th:if="${found}">
+
+<form th:action="@{|/edit/${human.getId()}|}" method="post" th:object="${human}">
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" th:field="*{name}"><br>
+
+    <label for="age">Age: </label>
+    <input type="number" name="age" id="age" th:field="*{age}">
+
+    <button type="submit">Save human</button>
+</form>
+
+</div>
+
+<div th:unless="${found}">
+    <p>Sorry, no human exists with the ID provided</p>
+</div>
+</div>
+
+<div th:unless="${id}">
+    <form action="/add-human" method="post">
+        <label for="name-add">Name: </label>
+        <input type="text" name="name" id="name-add"><br>
+
+        <label for="age-add">Age: </label>
+        <input type="number" name="age" id="age-add">
+
+        <button type="submit">Save human</button>
+    </form>
+</div>
+</body>
+</html>
