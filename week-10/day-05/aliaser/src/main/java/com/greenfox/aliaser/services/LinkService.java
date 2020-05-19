@@ -10,7 +10,7 @@ public interface LinkService {
     void generateSecretCode(Link link);
     Link findByAlias(String alias);
     void incrementLinkHitCount(Link link);
-    List<Link> listAllLInks();
+    List<Link> listAllLinks();
     Link findBySecretCode(String secretCode);
     void deleteLink(Link link);
     Link findById(long id);

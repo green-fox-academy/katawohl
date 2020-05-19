@@ -43,7 +43,7 @@ class LinkServiceImplTest {
 
         Mockito.when(repository.findAll()).thenReturn(links);
 
-        List<Link> testLinks = service.listAllLInks();
+        List<Link> testLinks = service.listAllLinks();
 
         Assert.assertEquals(testLinks, links);
     }

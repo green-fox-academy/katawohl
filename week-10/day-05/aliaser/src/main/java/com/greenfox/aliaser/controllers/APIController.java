@@ -20,7 +20,7 @@ public class APIController {
 
     @GetMapping("/api/links")
     public List<Link> displayAllLinks() {
-        return linkService.listAllLInks();
+        return linkService.listAllLinks();
     }
 
     @DeleteMapping("/api/links/{id}")

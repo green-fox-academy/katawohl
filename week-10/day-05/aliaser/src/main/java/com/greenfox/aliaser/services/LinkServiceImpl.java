@@ -48,7 +48,7 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public List<Link> listAllLInks() {
+    public List<Link> listAllLinks() {
         return linkRepository.findAll();
     }
 
