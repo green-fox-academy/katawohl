@@ -6,6 +6,9 @@ import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.util.Arrays;
+import java.util.List;
+
 class LinkServiceImplTest {
 
     @Test
@@ -25,5 +28,23 @@ class LinkServiceImplTest {
         Link testLink = service.findByAlias("test");
 
         Assert.assertEquals(testLink, link);
+    }
+
+    @Test
+    void listAllLInksShouldReturnCorrectLinks() {
+        LinkRepository repository = Mockito.mock(LinkRepository.class);
+
+        LinkServiceImpl service = new LinkServiceImpl(repository);
+
+        List<Link> links = Arrays.asList(
+                new Link(),
+                new Link()
+        );
+
+        Mockito.when(repository.findAll()).thenReturn(links);
+
+        List<Link> testLinks = service.listAllLInks();
+
+        Assert.assertEquals(testLinks, links);
     }
 }
