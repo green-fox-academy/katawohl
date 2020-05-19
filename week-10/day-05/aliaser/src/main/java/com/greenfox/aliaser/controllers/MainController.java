@@ -19,7 +19,6 @@ public class MainController {
         this.linkService = linkService;
     }
 
-    //need a walkthrough with this first part of the exam!
     @GetMapping("/")
     public String renderMainPage(@ModelAttribute Link link,
                                  @RequestParam(required = false) Boolean ifAliasExists,
