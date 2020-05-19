@@ -19,6 +19,11 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
+    public void addLink(Link link) {
+        linkRepository.save(link);
+    }
+
+    @Override
     public void generateSecretCode(Link link) {
         String secretCode = "";
         Random random = new Random();
@@ -28,7 +33,6 @@ public class LinkServiceImpl implements LinkService {
         }
 
         link.setSecretCode(secretCode);
-        linkRepository.save(link);
     }
 
     @Override
@@ -61,6 +65,11 @@ public class LinkServiceImpl implements LinkService {
     @Override
     public Link findById(long id) {
         return linkRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Boolean ifAliasAlreadyExists(String alias) {
+        return null;
     }
 
 }

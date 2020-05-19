@@ -5,60 +5,33 @@
     <title>Aliaser</title>
 </head>
 <body>
-<div th:if="${found}">
 
-    <div th:if="${secretCode}">
+<div th:if="${aliasExists}">
 
-        <p>Your URL is aliased to <span th:text="${link.getAlias()}"></span> and your secret code is <span
-                th:text="${link.getSecretCode()}"></span>.</p>
-
-        <form action="/api/links" method="post">
-
-            <label for="urlNew">URL</label>
-            <input type="url" name="url" id="urlNew"><br>
-
-            <label for="aliasNew">Alias</label>
-            <input type="text" name="alias" id="aliasNew"><br>
-
-            <button type="submit"><a href="/">Submit</a></button>
-
-        </form>
-    </div>
-
-    <div th:unless="${secretCode}">
-
-        <p style="color: red">Your alias is already in use!</p>
-
-        <form action="/api/links" method="post">
-
-            <label for="urlRenew">URL</label>
-            <input type="url" name="url" id="urlReNew" th:text="${link.getUrl()}"><br>
-
-            <label for="aliasReNew">Alias</label>
-            <input type="text" name="alias" id="aliasReNew" th:text="${link.getAlias()}"><br>
-
-            <button type="submit"><a href="/">Submit</a></button>
-
-        </form>
-
-    </div>
-</div>
-
-<div th:unless="${found}">
-
-    <form action="/api/links" method="post">
-
-        <label for="url">URL</label>
-        <input type="url" name="url" id="url" required><br>
-
-        <label for="alias">Alias</label>
-        <input type="text" name="alias" id="alias" required><br>
-
-        <button type="submit">Submit</button>
-
-    </form>
+    <p style="color: red">Your alias is already in use!</p>
 
 </div>
+
+<div th:if="${aliasNotExist}">
+
+    <p>Your URL is aliased to <span th:text="${successLink.getAlias()}"></span> and your secret code is <span
+            th:text="${successLink.getSecretCode()}"></span>.</p>
+
+</div>
+
+<form action="/save-link" method="post">
+    <label for="url">URL</label>
+    <input type="url" id="url" th:field="${link.url}"><br>
+
+    <label for="alias">Alias</label>
+    <input type="text" id="alias" th:field="${link.alias}"><br>
+
+    <button type="submit">Submit</button>
+
+</form>
+
+</div>
+
 
 </body>
 </html>
