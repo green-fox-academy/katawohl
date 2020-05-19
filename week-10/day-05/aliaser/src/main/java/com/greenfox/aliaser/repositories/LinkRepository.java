@@ -9,7 +9,9 @@ import java.util.Optional;
 
 @Repository
 public interface LinkRepository extends CrudRepository<Link, Long> {
-    Optional<Link> findByAlias(String alias);
+    Link findByAlias(String alias);
+
     Optional<Link> findBySecretCode(String secretCode);
+
     List<Link> findAll();
 }

@@ -37,7 +37,7 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public Link findByAlias(String alias) {
-        Link link = linkRepository.findByAlias(alias).orElse(null);
+        Link link = linkRepository.findByAlias(alias);
 
         return link;
     }
