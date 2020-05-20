@@ -22,7 +22,7 @@ public class PostController {
     @GetMapping("/")
     public String renderMainPage(Model model,
                                  @RequestParam(required = false) boolean ifPostNotExist,
-                                 @RequestParam(required = false) long id) {
+                                 @RequestParam(required = false) Long id) {
         model.addAttribute("posts", service.listAllPosts());
         model.addAttribute("noPost", ifPostNotExist);
         model.addAttribute("id", id);
@@ -30,15 +30,25 @@ public class PostController {
     }
 
     @GetMapping("/submit")
-    public String renderSubmitPage() {
+    public String renderSubmitPage(@RequestParam(required = false) boolean ifPostAlreadyExists,
+                                   @ModelAttribute Post post,
+                                   Model model) {
+        model.addAttribute("postExists", ifPostAlreadyExists);
+        model.addAttribute("post", ifPostAlreadyExists ? post : new Post());
         return "submit-page";
     }
 
     @PostMapping("/submit")
-    public String submitPost(@ModelAttribute Post post) {
-        service.addPost(post);
+    public String submitPost(@ModelAttribute Post post,
+                             RedirectAttributes redirectAttributes) {
+        redirectAttributes.addAttribute(post);
+        if (service.findByTitle(post.getTitle()) != null) {
+            return "redirect:/submit/?ifPostAlreadyExists=true";
+        } else {
+            service.addPost(post);
+            return "redirect:/";
+        }
 
-        return "redirect:/";
     }
 
     @GetMapping("/increase-like/{id}")

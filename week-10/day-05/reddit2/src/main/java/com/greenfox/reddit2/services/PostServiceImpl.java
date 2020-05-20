@@ -31,4 +31,14 @@ public class PostServiceImpl implements PostService {
     public Post findById(long id) {
         return repository.findById(id);
     }
+
+    @Override
+    public Post findByTitle(String title) {
+        return repository.findByTitle(title);
+    }
+
+    @Override
+    public void deletePost(Post post) {
+        repository.delete(post);
+    }
 }
