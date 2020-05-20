@@ -1,7 +1,6 @@
 package com.greenfox.reddit2.controllers;
 
 import com.greenfox.reddit2.models.User;
-import com.greenfox.reddit2.services.PostService;
 import com.greenfox.reddit2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
 
     private UserService userService;
-    private PostService postService;
 
     @Autowired
-    public UserController(UserService userService, PostService postService) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.postService = postService;
     }
 
     @GetMapping("/")

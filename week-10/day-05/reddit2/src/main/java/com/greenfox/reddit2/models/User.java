@@ -1,7 +1,5 @@
 package com.greenfox.reddit2.models;
 
-import jdk.dynalink.linker.LinkerServices;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
