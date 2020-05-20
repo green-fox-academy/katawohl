@@ -19,7 +19,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> listAllPosts() {
-        return repository.findAll();
+        return repository.getAllByOrderByLikeCountDesc();
     }
 
     @Override
@@ -35,10 +35,5 @@ public class PostServiceImpl implements PostService {
     @Override
     public Post findByTitle(String title) {
         return repository.findByTitle(title);
-    }
-
-    @Override
-    public void deletePost(Post post) {
-        repository.delete(post);
     }
 }

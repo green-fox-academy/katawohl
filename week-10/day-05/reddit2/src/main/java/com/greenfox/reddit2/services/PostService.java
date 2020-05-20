@@ -10,5 +10,4 @@ public interface PostService {
     void addPost(Post post);
     Post findById(long id);
     Post findByTitle(String title);
-    void deletePost(Post post);
 }
