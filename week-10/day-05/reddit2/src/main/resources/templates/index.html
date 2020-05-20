@@ -21,6 +21,7 @@
         <td><a th:href="@{'/increase-like/' + ${post.id}}">+</a></td>
         <td><a th:href="@{'/decrease-like/' + ${post.id}}">-</a></td>
         <td><a th:href="*{url}" th:text="*{title}" target="blank"></a></td>
+        <td th:text="*{date}"></td>
     </tr>
     </tbody>
 </table>

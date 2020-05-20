@@ -1,9 +1,7 @@
 package com.greenfox.reddit2.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Post {
@@ -14,6 +12,9 @@ public class Post {
     private String url;
     private String title;
     private int likeCount;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date = new Date();
 
     public Post() {
     }
@@ -48,5 +49,13 @@ public class Post {
 
     public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
