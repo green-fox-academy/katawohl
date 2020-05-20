@@ -16,6 +16,10 @@ public class Post {
     @Temporal(TemporalType.TIMESTAMP)
     private Date date = new Date();
 
+    @ManyToOne
+    @JoinColumn
+    private User user;
+
     public Post() {
     }
 
