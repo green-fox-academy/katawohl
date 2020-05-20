@@ -41,9 +41,13 @@
         <td><a th:href="@{'/increase-like/' + ${post.id}}">+</a></td>
         <td><a th:href="@{'/decrease-like/' + ${post.id}}">-</a></td>
         <td><a th:href="*{url}" th:text="*{title}" target="blank"></a></td>
+        <td th:text="*{user.name}"></td>
         <td th:text="*{date}"></td>
+        <td><a th:href="@{|/${post.getUser().getId()}/submit|}" target="blank">Submit a new post</a></td>
     </tr>
     </tbody>
 </table>
+
+<button><a href="/">Add another user</a></button>
 </body>
 </html>
