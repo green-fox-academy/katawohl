@@ -5,4 +5,5 @@ import com.greenfox.reddit2.models.User;
 public interface UserService {
     void addUser(User user);
     User findById(long id);
+    User findByName(String name);
 }

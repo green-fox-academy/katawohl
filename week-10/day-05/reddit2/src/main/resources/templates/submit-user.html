@@ -34,6 +34,10 @@
 
 <h1>Submit a new user</h1>
 
+<div th:if="${userExists}">
+    <p style="color:red">User already exists! Provide another user name.</p>
+</div>
+
 <form action="/" method="post">
 
     <label for="name">Username:</label>

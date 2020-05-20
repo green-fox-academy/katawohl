@@ -44,7 +44,6 @@ public class PostController {
 
         model.addAttribute("user", user);
         model.addAttribute("postExists", ifPostAlreadyExists);
-        model.addAttribute("post", ifPostAlreadyExists ? post : new Post());
         return "submit-page";
     }
 
@@ -57,13 +56,12 @@ public class PostController {
         User user = userService.findById(userId);
 
         if (postService.findByTitle(post.getTitle()) != null) {
-            return "redirect:/submit/?ifPostAlreadyExists=true";
+            return "redirect:/" + userId + "/submit?ifPostAlreadyExists=true";
         } else {
             postService.addPost(post);
             postService.addUserToPost(user, post);
             return "redirect:/list-of-posts";
         }
-
     }
 
     @GetMapping("/increase-like/{id}")
