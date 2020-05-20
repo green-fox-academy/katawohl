@@ -10,6 +10,10 @@
 
 <h1>Trending Posts</h1>
 
+<div th:if="${noPost}">
+    <p style="color: red"> Sorry, there are no posts with the ID <span th:text="${id}"></span>!</p>
+</div>
+
 <table>
     <tbody>
     <tr th:each="post : ${posts}" th:object="${post}">

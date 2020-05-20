@@ -6,10 +6,8 @@ import com.greenfox.reddit2.services.PostServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class PostController {
@@ -22,8 +20,12 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String renderMainPage(Model model) {
+    public String renderMainPage(Model model,
+                                 @RequestParam(required = false) boolean ifPostNotExist,
+                                 @RequestParam(required = false) long id) {
         model.addAttribute("posts", service.listAllPosts());
+        model.addAttribute("noPost", ifPostNotExist);
+        model.addAttribute("id", id);
         return "index";
     }
 
@@ -40,20 +42,32 @@ public class PostController {
     }
 
     @GetMapping("/increase-like/{id}")
-    public String increaseLikeCount(@PathVariable(name = "id") long id) {
+    public String increaseLikeCount(@PathVariable(name = "id") long id, RedirectAttributes redirectAttributes) {
         Post post = service.findById(id);
-        post.setLikeCount(post.getLikeCount() + 1);
-        service.addPost(post);
 
-        return "redirect:/";
+        if (post != null) {
+            post.setLikeCount(post.getLikeCount() + 1);
+            service.addPost(post);
+
+            return "redirect:/";
+        } else {
+            redirectAttributes.addAttribute("id", id);
+            return "redirect:/?ifPostNotExist=true";
+        }
     }
 
     @GetMapping("/decrease-like/{id}")
-    public String decreaseLikeCount(@PathVariable(name = "id") long id) {
+    public String decreaseLikeCount(@PathVariable(name = "id") long id, RedirectAttributes redirectAttributes) {
         Post post = service.findById(id);
-        post.setLikeCount(post.getLikeCount() - 1);
-        service.addPost(post);
 
-        return "redirect:/";
+        if (post != null) {
+            post.setLikeCount(post.getLikeCount() - 1);
+            service.addPost(post);
+
+            return "redirect:/";
+        } else {
+            redirectAttributes.addAttribute("id", id);
+            return "redirect:/?ifPostNotExist=true";
+        }
     }
 }
