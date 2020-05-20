@@ -16,7 +16,7 @@
         <td th:text="*{likeCount}"></td>
         <td><a href="/increase-like">+</a></td>
         <td><a href="/decrease-like">-</a></td>
-        <td th:text="*{title}"><a th:href="*{url}"></a></td>
+        <td><a th:href="*{url}" th:text="*{title}"></a></td>
     </tr>
     </tbody>
 </table>
