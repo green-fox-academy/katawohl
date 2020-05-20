@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -33,6 +34,24 @@ public class PostController {
 
     @PostMapping("/submit")
     public String submitPost(@ModelAttribute Post post) {
+        service.addPost(post);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/increase-like/{id}")
+    public String increaseLikeCount(@PathVariable(name = "id") long id) {
+        Post post = service.findById(id);
+        post.setLikeCount(post.getLikeCount() + 1);
+        service.addPost(post);
+
+        return "redirect:/";
+    }
+
+    @GetMapping("/decrease-like/{id}")
+    public String decreaseLikeCount(@PathVariable(name = "id") long id) {
+        Post post = service.findById(id);
+        post.setLikeCount(post.getLikeCount() - 1);
         service.addPost(post);
 
         return "redirect:/";
