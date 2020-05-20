@@ -39,4 +39,10 @@ public class UserController {
             return "redirect:/" + user.getId() + "/submit";
         }
     }
+
+    @GetMapping("/submit")
+    public String showListOfUsers(Model model){
+        model.addAttribute("users", userService.listAllUsers());
+        return "list-of-users";
+    }
 }
