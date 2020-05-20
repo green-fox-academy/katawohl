@@ -20,7 +20,7 @@
         <td th:text="*{likeCount}"></td>
         <td><a th:href="@{'/increase-like/' + ${post.id}}">+</a></td>
         <td><a th:href="@{'/decrease-like/' + ${post.id}}">-</a></td>
-        <td><a th:href="*{url}" th:text="*{title}"></a></td>
+        <td><a th:href="*{url}" th:text="*{title}" target="blank"></a></td>
     </tr>
     </tbody>
 </table>
