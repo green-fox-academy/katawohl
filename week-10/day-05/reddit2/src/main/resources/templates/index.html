@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reddit-like app</title>
+</head>
+<body>
+
+<button><a href="/submit">Submit new post</a></button>
+
+<h1>Trending Posts</h1>
+
+<table>
+    <tbody>
+    <tr th:each="post : ${posts}" th:object="${post}">
+        <td th:text="*{likeCount}"></td>
+        <td><a href="/increase-like">+</a></td>
+        <td><a href="/decrease-like">-</a></td>
+        <td th:text="*{title}"><a th:href="*{url}"></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
